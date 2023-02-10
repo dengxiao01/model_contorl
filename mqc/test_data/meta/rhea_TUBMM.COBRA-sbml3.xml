@@ -1,0 +1,1313 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" fbc:required="false" level="3" version="1" xmlns:fbc="http://www.sbml.org/sbml/level3/version1/fbc/version2" xmlns:html="http://www.w3.org/1999/xhtml">
+  <model fbc:strict="true" id="rhea_TUBMM" metaid="_2ea8a9e8-b0e4-4f34-a9dd-57d855ea23a7" name="No description" sboTerm="SBO:0000624">
+    <notes>
+      <html:p>ID: rhea_TUBMM</html:p><html:p>Description: No description</html:p><html:p>LB: -1000</html:p><html:p>UB: 1000</html:p><html:p>Organism: Tuber melanosporum (strain Mel28) (Perigord black truffle) (Strain: Mel28)</html:p><html:p>Taxid: 656061</html:p><html:p>Lineage: Eukaryota, Fungi, Dikarya, Ascomycota, Pezizomycotina, Pezizomycetes, Pezizales, Tuberaceae, Tuber</html:p><html:p>Proteome ID: UP000006911</html:p>
+    </notes>
+    <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_2ea8a9e8-b0e4-4f34-a9dd-57d855ea23a7">
+	<bqbiol:hasTaxon>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/taxonomy:656061"/>
+	</rdf:Bag>
+	</bqbiol:hasTaxon>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+      <fbc:listOfGeneProducts xmlns:fbc="http://www.sbml.org/sbml/level3/version1/fbc/version2">
+      <fbc:geneProduct fbc:id="G_GATA_TUBMM" fbc:label="GSTUM_00008496001" fbc:name="Glutamyl-tRNA(Gln) amidotransferase subunit A, mitochondrial (Glu-AdT subunit A) (EC 6.3.5.7)"/>
+      <fbc:geneProduct fbc:id="G_ITPA_TUBMM" fbc:label="GSTUM_00005907001" fbc:name="Inosine triphosphate pyrophosphatase (ITPase) (Inosine triphosphatase) (EC 3.6.1.9) (Non-canonical purine NTP pyrophosphatase) (Non-standard purine NTP pyrophosphatase) (Nucleoside-triphosphate diphosphatase) (Nucleoside-triphosphate pyrophosphatase) (NTPase)"/>
+      <fbc:geneProduct fbc:id="G_TRM5_TUBMM" fbc:label="TRM5;GSTUM_00011062001" fbc:name="tRNA (guanine(37)-N1)-methyltransferase (EC 2.1.1.228) (M1G-methyltransferase) (tRNA [GM37] methyltransferase) (tRNA methyltransferase 5)"/>
+      <fbc:geneProduct fbc:id="G_MTAP_TUBMM" fbc:label="GSTUM_00007013001" fbc:name="S-methyl-5'-thioadenosine phosphorylase (EC 2.4.2.28) (5'-methylthioadenosine phosphorylase) (MTA phosphorylase) (MTAP) (MTAPase)"/>
+      <fbc:geneProduct fbc:id="G_MTND_TUBMM" fbc:label="ADI1;GSTUM_00006393001" fbc:name="1,2-dihydroxy-3-keto-5-methylthiopentene dioxygenase (EC 1.13.11.54) (Acireductone dioxygenase (Fe(2+)-requiring)) (ARD) (Fe-ARD)"/>
+    </fbc:listOfGeneProducts>
+    <listOfUnitDefinitions>
+      <unitDefinition id="mmol_per_gDW_per_hr">
+        <listOfUnits>
+          <unit exponent="1" kind="mole" multiplier="1" scale="-3"/>
+          <unit exponent="-1" kind="gram" multiplier="1" scale="0"/>
+          <unit exponent="-1" kind="second" multiplier="3600" scale="0"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment constant="true" id="MNXD1" name="generic compartment 1" sboTerm="SBO:0000290">
+        <notes>
+          <html:p>REFERENCE: mnx:MNXD1</html:p>
+        </notes>
+      </compartment>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species boundaryCondition="false" compartment="MNXD1" constant="false" hasOnlySubstanceUnits="false" id="MNXM1091284__64__MNXD1" metaid="e9c23b82-bafa-4f97-ace1-9a1a60194c8e" name="L-glutamyl-tRNA(Gln)">
+        <notes>
+          <html:p>COMPOUND_ID: MNXM1091284</html:p><html:p>SOURCE: rheaG:9684</html:p><html:p>XREFS: rheaG:9684</html:p><html:p>REFERENCE: rheaG:9684</html:p>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#e9c23b82-bafa-4f97-ace1-9a1a60194c8e">
+	<bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/metanetx.chemical:MNXM1091284"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </species>
+      <species boundaryCondition="false" compartment="MNXD1" constant="false" fbc:charge="0" fbc:chemicalFormula="C5H10N2O3" hasOnlySubstanceUnits="false" id="MNXM37__64__MNXD1" metaid="_2cbddda8-7d5d-4129-912a-ac97e37db6bb" name="L-glutamine">
+        <notes>
+          <html:p>COMPOUND_ID: MNXM37</html:p><html:p>SOURCE: chebi:58359</html:p><html:p>FORMULA: C5H10N2O3</html:p><html:p>MASS: 146.06914</html:p><html:p>CHARGE: 0</html:p><html:p>XREFS: chebi:58359;CHEBI:18050;CHEBI:28300;CHEBI:32665;CHEBI:32666;CHEBI:32678;CHEBI:32679;CHEBI:58359;bigg.metabolite:gln__L;biggM:M_gln__L;biggM:gln-L;biggM:gln__L;chebi:13110;chebi:18050;chebi:21308;chebi:24316;chebi:28300;chebi:32665;chebi:32666;chebi:32678;chebi:32679;chebi:42812;chebi:42814;chebi:42899;chebi:42943;chebi:5432;chebi:6227;envipath:650babc9-9d68-4b73-9332-11972ca26f7b/compound/3e68b94e-5474-4a9c-9981-e96560429d85;envipathM:650babc9-9d68-4b73-9332-11972ca26f7b/compound/3e68b94e-5474-4a9c-9981-e96560429d85;hmdb:HMDB0000641;hmdb:HMDB00641;kegg.compound:C00064;kegg.compound:C00303;kegg.drug:D00015;keggC:C00064;keggC:C00303;keggC:M_C00064;keggC:M_C00303;keggD:D00015;keggD:M_D00015;metacyc.compound:GLN;metacycM:GLN;reactome:R-ALL-113522;reactome:R-ALL-212615;reactome:R-ALL-29472;reactomeM:R-ALL-113522;reactomeM:R-ALL-212615;reactomeM:R-ALL-29472;sabiork.compound:2011;sabiork.compound:74;sabiorkM:2011;sabiorkM:74;seed.compound:cpd00053;seed.compound:cpd00253;seedM:M_cpd00053;seedM:M_cpd00253;seedM:cpd00053;seedM:cpd00253</html:p><html:p>REFERENCE: chebi:58359</html:p>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_2cbddda8-7d5d-4129-912a-ac97e37db6bb">
+              <bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:58359"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	
+	<bqbiol:isRelatedTo>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/bigg.metabolite:gln-L"/>
+	<rdf:li rdf:resource="https://identifiers.org/bigg.metabolite:gln__L"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:13110"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:18050"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:21308"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:24316"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:28300"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:32665"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:32666"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:32678"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:32679"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:42812"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:42814"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:42899"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:42943"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:5432"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:6227"/>
+	<rdf:li rdf:resource="https://identifiers.org/envipath:650babc9-9d68-4b73-9332-11972ca26f7b/compound/3e68b94e-5474-4a9c-9981-e96560429d85"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB0000641"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB00641"/>
+	<rdf:li rdf:resource="https://identifiers.org/kegg.compound:C00064"/>
+	<rdf:li rdf:resource="https://identifiers.org/kegg.compound:C00303"/>
+	<rdf:li rdf:resource="https://identifiers.org/kegg.drug:D00015"/>
+	<rdf:li rdf:resource="https://identifiers.org/biocyc:META:GLN"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-113522"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-212615"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-29472"/>
+	<rdf:li rdf:resource="https://identifiers.org/sabiork.compound:2011"/>
+	<rdf:li rdf:resource="https://identifiers.org/sabiork.compound:74"/>
+	<rdf:li rdf:resource="https://identifiers.org/seed.compound:cpd00053"/>
+	<rdf:li rdf:resource="https://identifiers.org/seed.compound:cpd00253"/>
+	<rdf:li rdf:resource="https://identifiers.org/metanetx.chemical:MNXM37"/>
+	</rdf:Bag>
+	</bqbiol:isRelatedTo>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </species>
+      <species boundaryCondition="false" compartment="MNXD1" constant="false" fbc:charge="-4" fbc:chemicalFormula="C10H12N5O13P3" hasOnlySubstanceUnits="false" id="MNXM3__64__MNXD1" metaid="_41dcaf79-1d74-47b9-8ebf-a01045de30d7" name="ATP">
+        <notes>
+          <html:p>COMPOUND_ID: MNXM3</html:p><html:p>SOURCE: chebi:30616</html:p><html:p>FORMULA: C10H12N5O13P3</html:p><html:p>MASS: 502.96664</html:p><html:p>CHARGE: -4</html:p><html:p>XREFS: chebi:30616;CHEBI:15422;CHEBI:237958;CHEBI:30616;CHEBI:57299;bigg.metabolite:atp;biggM:M_atp;biggM:atp;chebi:10789;chebi:10841;chebi:13236;chebi:15422;chebi:22249;chebi:2359;chebi:237958;chebi:40938;chebi:57299;envipath:650babc9-9d68-4b73-9332-11972ca26f7b/compound/a1343718-5a06-47d8-bd73-e6186c58b43a;envipathM:650babc9-9d68-4b73-9332-11972ca26f7b/compound/a1343718-5a06-47d8-bd73-e6186c58b43a;hmdb:HMDB0000538;hmdb:HMDB00538;kegg.compound:C00002;kegg.drug:D08646;keggC:C00002;keggC:M_C00002;keggD:D08646;keggD:M_D08646;metacyc.compound:ATP;metacycM:ATP;reactome:R-ALL-113592;reactome:R-ALL-113593;reactome:R-ALL-114570;reactome:R-ALL-114571;reactome:R-ALL-139836;reactome:R-ALL-211579;reactome:R-ALL-29358;reactome:R-ALL-389573;reactome:R-ALL-5632460;reactomeM:R-ALL-113592;reactomeM:R-ALL-113593;reactomeM:R-ALL-114570;reactomeM:R-ALL-114571;reactomeM:R-ALL-139836;reactomeM:R-ALL-211579;reactomeM:R-ALL-29358;reactomeM:R-ALL-389573;reactomeM:R-ALL-5632460;sabiork.compound:34;sabiorkM:34;seed.compound:cpd00002;seedM:M_cpd00002;seedM:cpd00002</html:p><html:p>REFERENCE: chebi:30616</html:p>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_41dcaf79-1d74-47b9-8ebf-a01045de30d7">
+              <bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:30616"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	
+	<bqbiol:isRelatedTo>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/bigg.metabolite:atp"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:10789"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:10841"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:13236"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:15422"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:22249"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:2359"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:237958"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:40938"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:57299"/>
+	<rdf:li rdf:resource="https://identifiers.org/envipath:650babc9-9d68-4b73-9332-11972ca26f7b/compound/a1343718-5a06-47d8-bd73-e6186c58b43a"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB0000538"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB00538"/>
+	<rdf:li rdf:resource="https://identifiers.org/kegg.compound:C00002"/>
+	<rdf:li rdf:resource="https://identifiers.org/kegg.drug:D08646"/>
+	<rdf:li rdf:resource="https://identifiers.org/biocyc:META:ATP"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-113592"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-113593"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-114570"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-114571"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-139836"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-211579"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-29358"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-389573"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-5632460"/>
+	<rdf:li rdf:resource="https://identifiers.org/sabiork.compound:34"/>
+	<rdf:li rdf:resource="https://identifiers.org/seed.compound:cpd00002"/>
+	<rdf:li rdf:resource="https://identifiers.org/metanetx.chemical:MNXM3"/>
+	</rdf:Bag>
+	</bqbiol:isRelatedTo>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </species>
+      <species boundaryCondition="false" compartment="MNXD1" constant="false" fbc:charge="0" fbc:chemicalFormula="H2O" hasOnlySubstanceUnits="false" id="WATER__64__MNXD1" metaid="_8a168ec7-ed9a-4e70-b51c-c469b75ce92f" name="H2O">
+        <notes>
+          <html:p>COMPOUND_ID: WATER</html:p><html:p>SOURCE: chebi:15377</html:p><html:p>FORMULA: H2O</html:p><html:p>MASS: 18.01056</html:p><html:p>CHARGE: 0</html:p><html:p>XREFS: mnx:WATER;CHEBI:15377;CHEBI:29374;CHEBI:29375;CHEBI:33806;CHEBI:33811;CHEBI:33813;CHEBI:41981;WATER;bigg.metabolite:h2o;biggM:M_h2o;biggM:h2o;chebi:10743;chebi:13352;chebi:15377;chebi:27313;chebi:29373;chebi:29374;chebi:29375;chebi:33806;chebi:33811;chebi:33813;chebi:41979;chebi:41981;chebi:42043;chebi:42857;chebi:43228;chebi:44292;chebi:44701;chebi:44819;chebi:5585;envipath:5882df9c-dae1-4d80-a40e-db4724271456/compound/969d0227-3069-4e44-9525-7ae7bad84170;envipath:650babc9-9d68-4b73-9332-11972ca26f7b/compound/799908db-b8c9-4982-86cb-1f225e2ad08c;envipath:650babc9-9d68-4b73-9332-11972ca26f7b/compound/e7f34a8e-cded-4793-b6d5-792335b38636;envipath:b0c0e9bc-b183-45e9-9f83-8e743ed5dc7b/compound/426cf377-a166-441d-a118-d32682004128;envipath:d817c31c-d879-44c8-913d-2963d42f8203/compound/27c22ce9-2753-43ba-96bc-ad4164fee4a7;envipathM:5882df9c-dae1-4d80-a40e-db4724271456/compound/969d0227-3069-4e44-9525-7ae7bad84170;envipathM:650babc9-9d68-4b73-9332-11972ca26f7b/compound/799908db-b8c9-4982-86cb-1f225e2ad08c;envipathM:650babc9-9d68-4b73-9332-11972ca26f7b/compound/e7f34a8e-cded-4793-b6d5-792335b38636;envipathM:b0c0e9bc-b183-45e9-9f83-8e743ed5dc7b/compound/426cf377-a166-441d-a118-d32682004128;envipathM:d817c31c-d879-44c8-913d-2963d42f8203/compound/27c22ce9-2753-43ba-96bc-ad4164fee4a7;hmdb:HMDB0002111;hmdb:HMDB02111;kegg.compound:C00001;kegg.drug:D00001;kegg.drug:D03703;kegg.drug:D06249;kegg.drug:D06322;keggC:C00001;keggC:M_C00001;keggD:D00001;keggD:D03703;keggD:D06249;keggD:D06322;keggD:M_D00001;keggD:M_D03703;keggD:M_D06249;keggD:M_D06322;metacyc.compound:WATER;metacycM:WATER;reactome:R-ALL-109276;reactome:R-ALL-113518;reactome:R-ALL-113519;reactome:R-ALL-113521;reactome:R-ALL-141343;reactome:R-ALL-1605715;reactome:R-ALL-189422;reactome:R-ALL-2022884;reactome:R-ALL-2429665;reactome:R-ALL-29356;reactome:R-ALL-351603;reactome:R-ALL-5668574;reactomeM:R-ALL-109276;reactomeM:R-ALL-113518;reactomeM:R-ALL-113519;reactomeM:R-ALL-113521;reactomeM:R-ALL-141343;reactomeM:R-ALL-1605715;reactomeM:R-ALL-189422;reactomeM:R-ALL-2022884;reactomeM:R-ALL-2429665;reactomeM:R-ALL-29356;reactomeM:R-ALL-351603;reactomeM:R-ALL-5668574;sabiork.compound:40;sabiorkM:40;seed.compound:cpd00001;seedM:M_cpd00001;seedM:cpd00001</html:p><html:p>REFERENCE: mnx:WATER</html:p>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_8a168ec7-ed9a-4e70-b51c-c469b75ce92f">
+              <bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/bigg.metabolite:h2o"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	
+	<bqbiol:isRelatedTo>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:10743"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:13352"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:15377"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:27313"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:29373"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:29374"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:29375"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:33806"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:33811"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:33813"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:41979"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:41981"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:42043"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:42857"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:43228"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:44292"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:44701"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:44819"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:5585"/>
+	<rdf:li rdf:resource="https://identifiers.org/envipath:5882df9c-dae1-4d80-a40e-db4724271456/compound/969d0227-3069-4e44-9525-7ae7bad84170"/>
+	<rdf:li rdf:resource="https://identifiers.org/envipath:650babc9-9d68-4b73-9332-11972ca26f7b/compound/799908db-b8c9-4982-86cb-1f225e2ad08c"/>
+	<rdf:li rdf:resource="https://identifiers.org/envipath:650babc9-9d68-4b73-9332-11972ca26f7b/compound/e7f34a8e-cded-4793-b6d5-792335b38636"/>
+	<rdf:li rdf:resource="https://identifiers.org/envipath:b0c0e9bc-b183-45e9-9f83-8e743ed5dc7b/compound/426cf377-a166-441d-a118-d32682004128"/>
+	<rdf:li rdf:resource="https://identifiers.org/envipath:d817c31c-d879-44c8-913d-2963d42f8203/compound/27c22ce9-2753-43ba-96bc-ad4164fee4a7"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB0002111"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB02111"/>
+	<rdf:li rdf:resource="https://identifiers.org/kegg.compound:C00001"/>
+	<rdf:li rdf:resource="https://identifiers.org/kegg.drug:D00001"/>
+	<rdf:li rdf:resource="https://identifiers.org/kegg.drug:D03703"/>
+	<rdf:li rdf:resource="https://identifiers.org/kegg.drug:D06249"/>
+	<rdf:li rdf:resource="https://identifiers.org/kegg.drug:D06322"/>
+	<rdf:li rdf:resource="https://identifiers.org/biocyc:META:WATER"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-109276"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-113518"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-113519"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-113521"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-141343"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-1605715"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-189422"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-2022884"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-2429665"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-29356"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-351603"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-5668574"/>
+	<rdf:li rdf:resource="https://identifiers.org/sabiork.compound:40"/>
+	<rdf:li rdf:resource="https://identifiers.org/seed.compound:cpd00001"/>
+	</rdf:Bag>
+	</bqbiol:isRelatedTo>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </species>
+      <species boundaryCondition="false" compartment="MNXD1" constant="false" fbc:charge="-3" fbc:chemicalFormula="C10H12N5O10P2" hasOnlySubstanceUnits="false" id="MNXM40333__64__MNXD1" metaid="d8bb31c7-f2bf-4672-8c36-bc897ed7313a" name="ADP">
+        <notes>
+          <html:p>COMPOUND_ID: MNXM40333</html:p><html:p>SOURCE: chebi:456216</html:p><html:p>FORMULA: C10H12N5O10P2</html:p><html:p>MASS: 424.00759</html:p><html:p>CHARGE: -3</html:p><html:p>XREFS: chebi:456216;CHEBI:16761;CHEBI:456216;CHEBI:87518;bigg.metabolite:adp;biggM:M_adp;biggM:adp;chebi:13222;chebi:16761;chebi:22244;chebi:2342;chebi:40553;chebi:87518;envipath:650babc9-9d68-4b73-9332-11972ca26f7b/compound/716505b7-3074-4a0f-abb5-229dd357d8c2;envipathM:650babc9-9d68-4b73-9332-11972ca26f7b/compound/716505b7-3074-4a0f-abb5-229dd357d8c2;hmdb:HMDB0001341;hmdb:HMDB01341;kegg.compound:C00008;kegg.glycan:G11113;keggC:C00008;keggC:M_C00008;keggG:G11113;keggG:M_G11113;metacyc.compound:ADP;metacyc.compound:ADP-GROUP;metacycM:ADP;metacycM:ADP-GROUP;reactome:R-ALL-113581;reactome:R-ALL-113582;reactome:R-ALL-114564;reactome:R-ALL-114565;reactome:R-ALL-196180;reactome:R-ALL-211606;reactome:R-ALL-29370;reactome:R-ALL-5632457;reactome:R-ALL-8931884;reactomeM:R-ALL-113581;reactomeM:R-ALL-113582;reactomeM:R-ALL-114564;reactomeM:R-ALL-114565;reactomeM:R-ALL-196180;reactomeM:R-ALL-211606;reactomeM:R-ALL-29370;reactomeM:R-ALL-5632457;reactomeM:R-ALL-8931884;sabiork.compound:35;sabiorkM:35;seed.compound:cpd00008;seed.compound:cpd22244;seedM:M_cpd00008;seedM:M_cpd22244;seedM:cpd00008;seedM:cpd22244</html:p><html:p>REFERENCE: chebi:456216</html:p>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#d8bb31c7-f2bf-4672-8c36-bc897ed7313a">
+              <bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:456216"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	
+	<bqbiol:isRelatedTo>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/bigg.metabolite:adp"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:13222"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:16761"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:22244"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:2342"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:40553"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:87518"/>
+	<rdf:li rdf:resource="https://identifiers.org/envipath:650babc9-9d68-4b73-9332-11972ca26f7b/compound/716505b7-3074-4a0f-abb5-229dd357d8c2"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB0001341"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB01341"/>
+	<rdf:li rdf:resource="https://identifiers.org/kegg.compound:C00008"/>
+	<rdf:li rdf:resource="https://identifiers.org/kegg.glycan:G11113"/>
+	<rdf:li rdf:resource="https://identifiers.org/biocyc:META:ADP"/>
+	<rdf:li rdf:resource="https://identifiers.org/biocyc:META:ADP-GROUP"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-113581"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-113582"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-114564"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-114565"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-196180"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-211606"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-29370"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-5632457"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-8931884"/>
+	<rdf:li rdf:resource="https://identifiers.org/sabiork.compound:35"/>
+	<rdf:li rdf:resource="https://identifiers.org/seed.compound:cpd00008"/>
+	<rdf:li rdf:resource="https://identifiers.org/seed.compound:cpd22244"/>
+	<rdf:li rdf:resource="https://identifiers.org/metanetx.chemical:MNXM40333"/>
+	</rdf:Bag>
+	</bqbiol:isRelatedTo>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </species>
+      <species boundaryCondition="false" compartment="MNXD1" constant="false" fbc:charge="-1" fbc:chemicalFormula="C5H8NO4" hasOnlySubstanceUnits="false" id="MNXM741173__64__MNXD1" metaid="_206056df-02f4-4822-a310-873ded759b51" name="L-glutamate">
+        <notes>
+          <html:p>COMPOUND_ID: MNXM741173</html:p><html:p>SOURCE: chebi:29985</html:p><html:p>FORMULA: C5H8NO4</html:p><html:p>MASS: 146.04588</html:p><html:p>CHARGE: -1</html:p><html:p>XREFS: chebi:29985;CHEBI:16015;CHEBI:29985;CHEBI:29988;bigg.metabolite:glu__L;biggM:M_glu__L;biggM:glu-L;biggM:glu__L;chebi:13107;chebi:16015;chebi:21301;chebi:21304;chebi:29988;chebi:42825;chebi:6224;envipath:650babc9-9d68-4b73-9332-11972ca26f7b/compound/3dfd7365-9e2c-468b-b365-b0c1788c8c9f;envipathM:650babc9-9d68-4b73-9332-11972ca26f7b/compound/3dfd7365-9e2c-468b-b365-b0c1788c8c9f;hmdb:HMDB0000148;hmdb:HMDB00148;kegg.compound:C00025;kegg.drug:D00007;keggC:C00025;keggC:M_C00025;keggD:D00007;keggD:M_D00007;metacyc.compound:GLT;metacycM:GLT;reactome:R-ALL-113552;reactome:R-ALL-210382;reactome:R-ALL-210509;reactome:R-ALL-29404;reactome:R-ALL-428614;reactomeM:R-ALL-113552;reactomeM:R-ALL-210382;reactomeM:R-ALL-210509;reactomeM:R-ALL-29404;reactomeM:R-ALL-428614;sabiork.compound:73;sabiorkM:73;seed.compound:cpd00023;seedM:M_cpd00023;seedM:cpd00023</html:p><html:p>REFERENCE: chebi:29985</html:p>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_206056df-02f4-4822-a310-873ded759b51">
+              <bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:29985"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	
+	<bqbiol:isRelatedTo>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/bigg.metabolite:glu-L"/>
+	<rdf:li rdf:resource="https://identifiers.org/bigg.metabolite:glu__L"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:13107"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:16015"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:21301"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:21304"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:29988"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:42825"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:6224"/>
+	<rdf:li rdf:resource="https://identifiers.org/envipath:650babc9-9d68-4b73-9332-11972ca26f7b/compound/3dfd7365-9e2c-468b-b365-b0c1788c8c9f"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB0000148"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB00148"/>
+	<rdf:li rdf:resource="https://identifiers.org/kegg.compound:C00025"/>
+	<rdf:li rdf:resource="https://identifiers.org/kegg.drug:D00007"/>
+	<rdf:li rdf:resource="https://identifiers.org/biocyc:META:GLT"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-113552"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-210382"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-210509"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-29404"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-428614"/>
+	<rdf:li rdf:resource="https://identifiers.org/sabiork.compound:73"/>
+	<rdf:li rdf:resource="https://identifiers.org/seed.compound:cpd00023"/>
+	<rdf:li rdf:resource="https://identifiers.org/metanetx.chemical:MNXM741173"/>
+	</rdf:Bag>
+	</bqbiol:isRelatedTo>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </species>
+      <species boundaryCondition="false" compartment="MNXD1" constant="false" fbc:chemicalFormula="C15H21N7O5R" hasOnlySubstanceUnits="false" id="MNXM741205__64__MNXD1" metaid="_9db951af-6b15-48fa-8745-8a5445443c29" name="L-Glutaminyl-tRNA(Gln)">
+        <notes>
+          <html:p>COMPOUND_ID: MNXM741205</html:p><html:p>SOURCE: rheaG:9681</html:p><html:p>FORMULA: C15H21N7O5R</html:p><html:p>XREFS: biggM:glntrna;bigg.metabolite:glntrna;biggM:M_glntrna;rheaG:9681</html:p><html:p>REFERENCE: biggM:glntrna</html:p>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_9db951af-6b15-48fa-8745-8a5445443c29">
+              <bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/bigg.metabolite:glntrna"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	
+	<bqbiol:isRelatedTo>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/metanetx.chemical:MNXM741205"/>
+	</rdf:Bag>
+	</bqbiol:isRelatedTo>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </species>
+      <species boundaryCondition="false" compartment="MNXD1" constant="false" fbc:charge="-2" fbc:chemicalFormula="HO4P" hasOnlySubstanceUnits="false" id="MNXM9__64__MNXD1" metaid="_93c3d5e4-56ff-4162-801e-44ffd0de42d7" name="phosphate">
+        <notes>
+          <html:p>COMPOUND_ID: MNXM9</html:p><html:p>SOURCE: chebi:43474</html:p><html:p>FORMULA: HO4P</html:p><html:p>MASS: 95.96234</html:p><html:p>CHARGE: -2</html:p><html:p>XREFS: chebi:43474;CHEBI:18367;CHEBI:26020;CHEBI:26078;CHEBI:35780;CHEBI:39745;CHEBI:43474;bigg.metabolite:pi;biggM:M_pi;biggM:pi;chebi:14791;chebi:18367;chebi:26020;chebi:26078;chebi:29137;chebi:29139;chebi:35780;chebi:39739;chebi:39745;chebi:43470;chebi:45024;chebi:7793;envipath:32de3cf4-e3e6-4168-956e-32fa5ddb0ce1/compound/c581b2ce-6238-45de-abc0-60ca8d47ed04;envipath:5882df9c-dae1-4d80-a40e-db4724271456/compound/84684967-eade-48d4-b25d-c4aede0a0836;envipath:5882df9c-dae1-4d80-a40e-db4724271456/compound/ad82c39b-2edb-4953-b971-79a2d2ea6e26;envipath:650babc9-9d68-4b73-9332-11972ca26f7b/compound/1905360c-ccbb-4360-9227-849d7dfec10d;envipath:650babc9-9d68-4b73-9332-11972ca26f7b/compound/aac01fea-4223-49c1-8b12-cd50f11ebfc8;envipath:650babc9-9d68-4b73-9332-11972ca26f7b/compound/db5219ee-60cb-4370-b066-340c9faf069c;envipath:d817c31c-d879-44c8-913d-2963d42f8203/compound/20ccfa65-a3e9-4b2a-aa8a-f56bd5b121a1;envipath:d817c31c-d879-44c8-913d-2963d42f8203/compound/cbd2c5f7-f89c-440f-a897-229548a3ba3c;envipathM:32de3cf4-e3e6-4168-956e-32fa5ddb0ce1/compound/c581b2ce-6238-45de-abc0-60ca8d47ed04;envipathM:5882df9c-dae1-4d80-a40e-db4724271456/compound/84684967-eade-48d4-b25d-c4aede0a0836;envipathM:5882df9c-dae1-4d80-a40e-db4724271456/compound/ad82c39b-2edb-4953-b971-79a2d2ea6e26;envipathM:650babc9-9d68-4b73-9332-11972ca26f7b/compound/1905360c-ccbb-4360-9227-849d7dfec10d;envipathM:650babc9-9d68-4b73-9332-11972ca26f7b/compound/aac01fea-4223-49c1-8b12-cd50f11ebfc8;envipathM:650babc9-9d68-4b73-9332-11972ca26f7b/compound/db5219ee-60cb-4370-b066-340c9faf069c;envipathM:d817c31c-d879-44c8-913d-2963d42f8203/compound/20ccfa65-a3e9-4b2a-aa8a-f56bd5b121a1;envipathM:d817c31c-d879-44c8-913d-2963d42f8203/compound/cbd2c5f7-f89c-440f-a897-229548a3ba3c;hmdb:HMDB0000973;hmdb:HMDB0001429;hmdb:HMDB0002105;hmdb:HMDB0002142;hmdb:HMDB0005947;hmdb:HMDB00973;hmdb:HMDB01429;hmdb:HMDB02105;hmdb:HMDB02142;hmdb:HMDB05947;kegg.compound:C00009;kegg.drug:D05467;keggC:C00009;keggC:M_C00009;keggD:D05467;keggD:M_D05467;metacyc.compound:CPD-16459;metacyc.compound:CPD-20124;metacyc.compound:Isoprenoid-Derivatives;metacyc.compound:PHOSPHATE-GROUP;metacyc.compound:Pi;metacycM:CPD-16459;metacycM:CPD-20124;metacycM:Isoprenoid-Derivatives;metacycM:PHOSPHATE-GROUP;metacycM:Pi;reactome:R-ALL-109277;reactome:R-ALL-1132287;reactome:R-ALL-113548;reactome:R-ALL-113550;reactome:R-ALL-113551;reactome:R-ALL-114640;reactome:R-ALL-2255331;reactome:R-ALL-29372;reactome:R-ALL-5228339;reactome:R-ALL-947590;reactomeM:R-ALL-109277;reactomeM:R-ALL-1132287;reactomeM:R-ALL-113548;reactomeM:R-ALL-113550;reactomeM:R-ALL-113551;reactomeM:R-ALL-114640;reactomeM:R-ALL-2255331;reactomeM:R-ALL-29372;reactomeM:R-ALL-5228339;reactomeM:R-ALL-947590;sabiork.compound:36;sabiorkM:36;seed.compound:cpd00009;seed.compound:cpd27787;seedM:M_cpd00009;seedM:M_cpd27787;seedM:cpd00009;seedM:cpd27787</html:p><html:p>REFERENCE: chebi:43474</html:p>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_93c3d5e4-56ff-4162-801e-44ffd0de42d7">
+              <bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:43474"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	
+	<bqbiol:isRelatedTo>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/bigg.metabolite:pi"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:14791"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:18367"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:26020"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:26078"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:29137"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:29139"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:35780"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:39739"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:39745"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:43470"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:45024"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:7793"/>
+	<rdf:li rdf:resource="https://identifiers.org/envipath:32de3cf4-e3e6-4168-956e-32fa5ddb0ce1/compound/c581b2ce-6238-45de-abc0-60ca8d47ed04"/>
+	<rdf:li rdf:resource="https://identifiers.org/envipath:5882df9c-dae1-4d80-a40e-db4724271456/compound/84684967-eade-48d4-b25d-c4aede0a0836"/>
+	<rdf:li rdf:resource="https://identifiers.org/envipath:5882df9c-dae1-4d80-a40e-db4724271456/compound/ad82c39b-2edb-4953-b971-79a2d2ea6e26"/>
+	<rdf:li rdf:resource="https://identifiers.org/envipath:650babc9-9d68-4b73-9332-11972ca26f7b/compound/1905360c-ccbb-4360-9227-849d7dfec10d"/>
+	<rdf:li rdf:resource="https://identifiers.org/envipath:650babc9-9d68-4b73-9332-11972ca26f7b/compound/aac01fea-4223-49c1-8b12-cd50f11ebfc8"/>
+	<rdf:li rdf:resource="https://identifiers.org/envipath:650babc9-9d68-4b73-9332-11972ca26f7b/compound/db5219ee-60cb-4370-b066-340c9faf069c"/>
+	<rdf:li rdf:resource="https://identifiers.org/envipath:d817c31c-d879-44c8-913d-2963d42f8203/compound/20ccfa65-a3e9-4b2a-aa8a-f56bd5b121a1"/>
+	<rdf:li rdf:resource="https://identifiers.org/envipath:d817c31c-d879-44c8-913d-2963d42f8203/compound/cbd2c5f7-f89c-440f-a897-229548a3ba3c"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB0000973"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB0001429"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB0002105"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB0002142"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB0005947"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB00973"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB01429"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB02105"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB02142"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB05947"/>
+	<rdf:li rdf:resource="https://identifiers.org/kegg.compound:C00009"/>
+	<rdf:li rdf:resource="https://identifiers.org/kegg.drug:D05467"/>
+	<rdf:li rdf:resource="https://identifiers.org/biocyc:META:CPD-16459"/>
+	<rdf:li rdf:resource="https://identifiers.org/biocyc:META:CPD-20124"/>
+	<rdf:li rdf:resource="https://identifiers.org/biocyc:META:Isoprenoid-Derivatives"/>
+	<rdf:li rdf:resource="https://identifiers.org/biocyc:META:PHOSPHATE-GROUP"/>
+	<rdf:li rdf:resource="https://identifiers.org/biocyc:META:Pi"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-109277"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-1132287"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-113548"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-113550"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-113551"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-114640"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-2255331"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-29372"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-5228339"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-947590"/>
+	<rdf:li rdf:resource="https://identifiers.org/sabiork.compound:36"/>
+	<rdf:li rdf:resource="https://identifiers.org/seed.compound:cpd00009"/>
+	<rdf:li rdf:resource="https://identifiers.org/seed.compound:cpd27787"/>
+	<rdf:li rdf:resource="https://identifiers.org/metanetx.chemical:MNXM9"/>
+	</rdf:Bag>
+	</bqbiol:isRelatedTo>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </species>
+      <species boundaryCondition="false" compartment="MNXD1" constant="false" fbc:charge="-3" fbc:chemicalFormula="HO7P2" hasOnlySubstanceUnits="false" id="MNXM11__64__MNXD1" metaid="_5935499d-9112-40f5-befb-cc48963c8d43" name="diphosphate">
+        <notes>
+          <html:p>COMPOUND_ID: MNXM11</html:p><html:p>SOURCE: chebi:33019</html:p><html:p>FORMULA: HO7P2</html:p><html:p>MASS: 174.92140</html:p><html:p>CHARGE: -3</html:p><html:p>XREFS: chebi:33019;CHEBI:18361;CHEBI:29888;CHEBI:33017;CHEBI:33019;CHEBI:45212;bigg.metabolite:ppi;biggM:M_ppi;biggM:ppi;chebi:13420;chebi:18361;chebi:29888;chebi:33017;chebi:33018;chebi:42009;chebi:45067;chebi:45208;chebi:45212;chebi:8683;envipath:650babc9-9d68-4b73-9332-11972ca26f7b/compound/9acf67f5-5b64-4865-a23f-5843f807a176;envipath:650babc9-9d68-4b73-9332-11972ca26f7b/compound/abed9fe0-f79d-499e-ad45-656e5927abdb;envipathM:650babc9-9d68-4b73-9332-11972ca26f7b/compound/9acf67f5-5b64-4865-a23f-5843f807a176;envipathM:650babc9-9d68-4b73-9332-11972ca26f7b/compound/abed9fe0-f79d-499e-ad45-656e5927abdb;hmdb:HMDB0000250;hmdb:HMDB00250;kegg.compound:C00013;keggC:C00013;keggC:M_C00013;metacyc.compound:PPI;metacyc.compound:PYROPHOSPHATE-GROUP;metacycM:PPI;metacycM:PYROPHOSPHATE-GROUP;reactome:R-ALL-111294;reactome:R-ALL-113541;reactome:R-ALL-113542;reactome:R-ALL-114654;reactome:R-ALL-159450;reactome:R-ALL-2046049;reactome:R-ALL-389593;reactomeM:R-ALL-111294;reactomeM:R-ALL-113541;reactomeM:R-ALL-113542;reactomeM:R-ALL-114654;reactomeM:R-ALL-159450;reactomeM:R-ALL-2046049;reactomeM:R-ALL-389593;sabiork.compound:1267;sabiorkM:1267;seed.compound:cpd00012;seed.compound:cpd27828;seedM:M_cpd00012;seedM:M_cpd27828;seedM:cpd00012;seedM:cpd27828</html:p><html:p>REFERENCE: chebi:33019</html:p>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_5935499d-9112-40f5-befb-cc48963c8d43">
+              <bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:33019"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	
+	<bqbiol:isRelatedTo>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/bigg.metabolite:ppi"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:13420"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:18361"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:29888"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:33017"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:33018"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:42009"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:45067"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:45208"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:45212"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:8683"/>
+	<rdf:li rdf:resource="https://identifiers.org/envipath:650babc9-9d68-4b73-9332-11972ca26f7b/compound/9acf67f5-5b64-4865-a23f-5843f807a176"/>
+	<rdf:li rdf:resource="https://identifiers.org/envipath:650babc9-9d68-4b73-9332-11972ca26f7b/compound/abed9fe0-f79d-499e-ad45-656e5927abdb"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB0000250"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB00250"/>
+	<rdf:li rdf:resource="https://identifiers.org/kegg.compound:C00013"/>
+	<rdf:li rdf:resource="https://identifiers.org/biocyc:META:PPI"/>
+	<rdf:li rdf:resource="https://identifiers.org/biocyc:META:PYROPHOSPHATE-GROUP"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-111294"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-113541"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-113542"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-114654"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-159450"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-2046049"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-389593"/>
+	<rdf:li rdf:resource="https://identifiers.org/sabiork.compound:1267"/>
+	<rdf:li rdf:resource="https://identifiers.org/seed.compound:cpd00012"/>
+	<rdf:li rdf:resource="https://identifiers.org/seed.compound:cpd27828"/>
+	<rdf:li rdf:resource="https://identifiers.org/metanetx.chemical:MNXM11"/>
+	</rdf:Bag>
+	</bqbiol:isRelatedTo>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </species>
+      <species boundaryCondition="false" compartment="MNXD1" constant="false" fbc:chemicalFormula="C5H8O7PR" hasOnlySubstanceUnits="false" id="MNXM737908__64__MNXD1" metaid="a278079d-4340-4778-8558-12b2e34d336c" name="a ribonucleoside 5&amp;apos;-phosphate">
+        <notes>
+          <html:p>COMPOUND_ID: MNXM737908</html:p><html:p>SOURCE: chebi:58043</html:p><html:p>FORMULA: C5H8O7PR</html:p><html:p>XREFS: chebi:58043;CHEBI:17188;CHEBI:58043;chebi:14676;chebi:17188;chebi:25607;chebi:7439;chebi:7653;chebi:7654;chebi:85513;metacyc.compound:Purine-ribonucleosides-5-P;metacyc.compound:Ribonucleoside-Monophosphates;metacyc.compound:Ribonucleotides;metacycM:Purine-ribonucleosides-5-P;metacycM:Ribonucleoside-Monophosphates;metacycM:Ribonucleotides</html:p><html:p>REFERENCE: chebi:58043</html:p>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#a278079d-4340-4778-8558-12b2e34d336c">
+              <bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:58043"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	
+	<bqbiol:isRelatedTo>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:14676"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:17188"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:25607"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:7439"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:7653"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:7654"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:85513"/>
+	<rdf:li rdf:resource="https://identifiers.org/biocyc:META:Purine-ribonucleosides-5-P"/>
+	<rdf:li rdf:resource="https://identifiers.org/biocyc:META:Ribonucleoside-Monophosphates"/>
+	<rdf:li rdf:resource="https://identifiers.org/biocyc:META:Ribonucleotides"/>
+	<rdf:li rdf:resource="https://identifiers.org/metanetx.chemical:MNXM737908"/>
+	</rdf:Bag>
+	</bqbiol:isRelatedTo>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </species>
+      <species boundaryCondition="false" compartment="MNXD1" constant="false" fbc:chemicalFormula="C5H8O13P3R" hasOnlySubstanceUnits="false" id="MNXM729013__64__MNXD1" metaid="_2c54a51b-ba58-46d4-a562-cc8c7e3e07fd" name="a ribonucleoside 5&amp;apos;-triphosphate">
+        <notes>
+          <html:p>COMPOUND_ID: MNXM729013</html:p><html:p>SOURCE: chebi:61557</html:p><html:p>FORMULA: C5H8O13P3R</html:p><html:p>XREFS: chebi:61557;CHEBI:17326;CHEBI:58104;CHEBI:61557;chebi:13411;chebi:14677;chebi:17326;chebi:25610;chebi:58104;chebi:7442;chebi:7655;metacyc.compound:Purine-ribonucleosides-5-PPP;metacyc.compound:Ribonucleoside-Triphosphates;metacycM:Purine-ribonucleosides-5-PPP;metacycM:Ribonucleoside-Triphosphates</html:p><html:p>REFERENCE: chebi:61557</html:p>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_2c54a51b-ba58-46d4-a562-cc8c7e3e07fd">
+              <bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:61557"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	
+	<bqbiol:isRelatedTo>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:13411"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:14677"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:17326"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:25610"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:58104"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:7442"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:7655"/>
+	<rdf:li rdf:resource="https://identifiers.org/biocyc:META:Purine-ribonucleosides-5-PPP"/>
+	<rdf:li rdf:resource="https://identifiers.org/biocyc:META:Ribonucleoside-Triphosphates"/>
+	<rdf:li rdf:resource="https://identifiers.org/metanetx.chemical:MNXM729013"/>
+	</rdf:Bag>
+	</bqbiol:isRelatedTo>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </species>
+      <species boundaryCondition="false" compartment="MNXD1" constant="false" hasOnlySubstanceUnits="false" id="MNXM1089932__64__MNXD1" metaid="_22988555-49b7-4657-8983-e16840395222" name="guanosine(37) in tRNA">
+        <notes>
+          <html:p>COMPOUND_ID: MNXM1089932</html:p><html:p>SOURCE: rheaG:10145</html:p><html:p>XREFS: rheaG:10145</html:p><html:p>REFERENCE: rheaG:10145</html:p>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_22988555-49b7-4657-8983-e16840395222">
+	<bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/metanetx.chemical:MNXM1089932"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </species>
+      <species boundaryCondition="false" compartment="MNXD1" constant="false" fbc:charge="1" fbc:chemicalFormula="C15H23N6O5S" hasOnlySubstanceUnits="false" id="MNXM1102072__64__MNXD1" metaid="c8a51812-99d8-4866-be03-e670338936a3" name="(S)-S-adenosyl-L-methionine">
+        <notes>
+          <html:p>COMPOUND_ID: MNXM1102072</html:p><html:p>SOURCE: chebi:59789</html:p><html:p>FORMULA: C15H23N6O5S</html:p><html:p>MASS: 399.14452</html:p><html:p>CHARGE: 1</html:p><html:p>XREFS: chebi:142094;CHEBI:142094;CHEBI:15414;CHEBI:33442;CHEBI:59789;CHEBI:67040;bigg.metabolite:amet;biggM:M_amet;biggM:amet;chebi:10786;chebi:10833;chebi:12742;chebi:12757;chebi:12760;chebi:15414;chebi:22036;chebi:33442;chebi:45607;chebi:527887;chebi:59789;chebi:67040;chebi:8946;hmdb:HMDB0001185;hmdb:HMDB0062709;hmdb:HMDB01185;hmdb:HMDB62709;kegg.compound:C00019;keggC:C00019;keggC:M_C00019;metacyc.compound:S-ADENOSYLMETHIONINE;metacycM:S-ADENOSYLMETHIONINE;reactome:R-ALL-2162265;reactome:R-ALL-71284;reactome:R-ALL-77087;reactomeM:R-ALL-2162265;reactomeM:R-ALL-71284;reactomeM:R-ALL-77087;sabiork.compound:1272;sabiorkM:1272;seed.compound:cpd00017;seed.compound:cpd33804;seedM:M_cpd00017;seedM:M_cpd33804;seedM:cpd00017;seedM:cpd33804</html:p><html:p>REFERENCE: chebi:142094</html:p>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#c8a51812-99d8-4866-be03-e670338936a3">
+              <bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:142094"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	
+	<bqbiol:isRelatedTo>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/bigg.metabolite:amet"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:10786"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:10833"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:12742"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:12757"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:12760"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:15414"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:22036"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:33442"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:45607"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:527887"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:59789"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:67040"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:8946"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB0001185"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB0062709"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB01185"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB62709"/>
+	<rdf:li rdf:resource="https://identifiers.org/kegg.compound:C00019"/>
+	<rdf:li rdf:resource="https://identifiers.org/biocyc:META:S-ADENOSYLMETHIONINE"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-2162265"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-71284"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-77087"/>
+	<rdf:li rdf:resource="https://identifiers.org/sabiork.compound:1272"/>
+	<rdf:li rdf:resource="https://identifiers.org/seed.compound:cpd00017"/>
+	<rdf:li rdf:resource="https://identifiers.org/seed.compound:cpd33804"/>
+	<rdf:li rdf:resource="https://identifiers.org/metanetx.chemical:MNXM1102072"/>
+	</rdf:Bag>
+	</bqbiol:isRelatedTo>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </species>
+      <species boundaryCondition="false" compartment="MNXD1" constant="false" hasOnlySubstanceUnits="false" id="MNXM1089933__64__MNXD1" metaid="_45321fce-f2f5-424c-b433-21422b886a45" name="N(1)-methylguanosine(37) in tRNA">
+        <notes>
+          <html:p>COMPOUND_ID: MNXM1089933</html:p><html:p>SOURCE: rheaG:10147</html:p><html:p>XREFS: rheaG:10147</html:p><html:p>REFERENCE: rheaG:10147</html:p>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_45321fce-f2f5-424c-b433-21422b886a45">
+	<bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/metanetx.chemical:MNXM1089933"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </species>
+      <species boundaryCondition="false" compartment="MNXD1" constant="false" fbc:charge="0" fbc:chemicalFormula="C14H20N6O5S" hasOnlySubstanceUnits="false" id="MNXM1102167__64__MNXD1" metaid="_1109292d-5eaa-481d-8971-6ab349199b02" name="S-adenosyl-L-homocysteine">
+        <notes>
+          <html:p>COMPOUND_ID: MNXM1102167</html:p><html:p>SOURCE: chebi:57856</html:p><html:p>FORMULA: C14H20N6O5S</html:p><html:p>MASS: 384.12159</html:p><html:p>CHARGE: 0</html:p><html:p>XREFS: chebi:57856;CHEBI:16680;CHEBI:57856;CHEBI:67009;bigg.metabolite:ahcys;biggM:M_ahcys;biggM:ahcys;chebi:12741;chebi:12759;chebi:12761;chebi:16680;chebi:22034;chebi:45495;chebi:67009;chebi:8945;hmdb:HMDB0000939;hmdb:HMDB00939;kegg.compound:C00021;keggC:C00021;keggC:M_C00021;metacyc.compound:ADENOSYL-HOMO-CYS;metacycM:ADENOSYL-HOMO-CYS;reactome:R-ALL-2162252;reactome:R-ALL-71285;reactome:R-ALL-77502;reactomeM:R-ALL-2162252;reactomeM:R-ALL-71285;reactomeM:R-ALL-77502;sabiork.compound:1274;sabiorkM:1274;seed.compound:cpd00019;seedM:M_cpd00019;seedM:cpd00019</html:p><html:p>REFERENCE: chebi:57856</html:p>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_1109292d-5eaa-481d-8971-6ab349199b02">
+              <bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:57856"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	
+	<bqbiol:isRelatedTo>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/bigg.metabolite:ahcys"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:12741"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:12759"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:12761"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:16680"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:22034"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:45495"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:67009"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:8945"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB0000939"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB00939"/>
+	<rdf:li rdf:resource="https://identifiers.org/kegg.compound:C00021"/>
+	<rdf:li rdf:resource="https://identifiers.org/biocyc:META:ADENOSYL-HOMO-CYS"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-2162252"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-71285"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-77502"/>
+	<rdf:li rdf:resource="https://identifiers.org/sabiork.compound:1274"/>
+	<rdf:li rdf:resource="https://identifiers.org/seed.compound:cpd00019"/>
+	<rdf:li rdf:resource="https://identifiers.org/metanetx.chemical:MNXM1102167"/>
+	</rdf:Bag>
+	</bqbiol:isRelatedTo>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </species>
+      <species boundaryCondition="false" compartment="MNXD1" constant="false" fbc:chemicalFormula="C5H8O6PR" hasOnlySubstanceUnits="false" id="MNXM6057__64__MNXD1" metaid="_2cc7563a-8495-48c5-900d-d171902ead58" name="a 2&amp;apos;-deoxyribonucleoside 5&amp;apos;-phosphate">
+        <notes>
+          <html:p>COMPOUND_ID: MNXM6057</html:p><html:p>SOURCE: chebi:65317</html:p><html:p>FORMULA: C5H8O6PR</html:p><html:p>XREFS: chebi:65317;CHEBI:18241;CHEBI:37016;CHEBI:65317;chebi:11395;chebi:13587;chebi:14120;chebi:18241;chebi:19253;chebi:23637;chebi:37016;chebi:4423;chebi:4425;kegg.compound:C00676;keggC:C00676;keggC:M_C00676;metacyc.compound:Deoxy-Ribonucleoside-Monophosphates;metacycM:Deoxy-Ribonucleoside-Monophosphates;sabiork.compound:1689;sabiorkM:1689;seed.compound:cpd00513;seedM:M_cpd00513;seedM:cpd00513</html:p><html:p>REFERENCE: chebi:65317</html:p>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_2cc7563a-8495-48c5-900d-d171902ead58">
+              <bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:65317"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	
+	<bqbiol:isRelatedTo>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:11395"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:13587"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:14120"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:18241"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:19253"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:23637"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:37016"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:4423"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:4425"/>
+	<rdf:li rdf:resource="https://identifiers.org/kegg.compound:C00676"/>
+	<rdf:li rdf:resource="https://identifiers.org/biocyc:META:Deoxy-Ribonucleoside-Monophosphates"/>
+	<rdf:li rdf:resource="https://identifiers.org/sabiork.compound:1689"/>
+	<rdf:li rdf:resource="https://identifiers.org/seed.compound:cpd00513"/>
+	<rdf:li rdf:resource="https://identifiers.org/metanetx.chemical:MNXM6057"/>
+	</rdf:Bag>
+	</bqbiol:isRelatedTo>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </species>
+      <species boundaryCondition="false" compartment="MNXD1" constant="false" fbc:chemicalFormula="C5H8O12P3R" hasOnlySubstanceUnits="false" id="MNXM96330__64__MNXD1" metaid="_2cd14ada-b596-4b25-97a4-0ecef9a88005" name="a 2&amp;apos;-deoxyribonucleoside 5&amp;apos;-triphosphate">
+        <notes>
+          <html:p>COMPOUND_ID: MNXM96330</html:p><html:p>SOURCE: chebi:61560</html:p><html:p>FORMULA: C5H8O12P3R</html:p><html:p>XREFS: chebi:61560;CHEBI:16381;CHEBI:61560;chebi:14121;chebi:16381;chebi:37072;chebi:4426;kegg.compound:C00677;keggC:C00677;keggC:M_C00677;metacyc.compound:Deoxy-Ribonucleoside-Triphosphates;metacycM:Deoxy-Ribonucleoside-Triphosphates;sabiork.compound:1690;sabiorkM:1690;seed.compound:cpd00514;seedM:M_cpd00514;seedM:cpd00514</html:p><html:p>REFERENCE: chebi:61560</html:p>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_2cd14ada-b596-4b25-97a4-0ecef9a88005">
+              <bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:61560"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	
+	<bqbiol:isRelatedTo>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:14121"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:16381"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:37072"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:4426"/>
+	<rdf:li rdf:resource="https://identifiers.org/kegg.compound:C00677"/>
+	<rdf:li rdf:resource="https://identifiers.org/biocyc:META:Deoxy-Ribonucleoside-Triphosphates"/>
+	<rdf:li rdf:resource="https://identifiers.org/sabiork.compound:1690"/>
+	<rdf:li rdf:resource="https://identifiers.org/seed.compound:cpd00514"/>
+	<rdf:li rdf:resource="https://identifiers.org/metanetx.chemical:MNXM96330"/>
+	</rdf:Bag>
+	</bqbiol:isRelatedTo>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </species>
+      <species boundaryCondition="false" compartment="MNXD1" constant="false" fbc:charge="0" fbc:chemicalFormula="C11H15N5O3S" hasOnlySubstanceUnits="false" id="MNXM1101977__64__MNXD1" metaid="_28845137-b44f-4759-a5a5-785950795adc" name="S-methyl-5&amp;apos;-thioadenosine">
+        <notes>
+          <html:p>COMPOUND_ID: MNXM1101977</html:p><html:p>SOURCE: chebi:17509</html:p><html:p>FORMULA: C11H15N5O3S</html:p><html:p>MASS: 297.08956</html:p><html:p>CHARGE: 0</html:p><html:p>XREFS: chebi:17509;CHEBI:17509;bigg.metabolite:5mta;biggM:5mta;biggM:M_5mta;chebi:12055;chebi:12064;chebi:12771;chebi:14605;chebi:1966;chebi:1986;chebi:20491;chebi:20494;chebi:44181;hmdb:HMDB0001173;hmdb:HMDB01173;kegg.compound:C00170;keggC:C00170;keggC:M_C00170;metacyc.compound:5-METHYLTHIOADENOSINE;metacycM:5-METHYLTHIOADENOSINE;reactome:R-ALL-353106;reactomeM:R-ALL-353106;sabiork.compound:1960;sabiorkM:1960;seed.compound:cpd00147;seedM:M_cpd00147;seedM:cpd00147</html:p><html:p>REFERENCE: chebi:17509</html:p>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_28845137-b44f-4759-a5a5-785950795adc">
+              <bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:17509"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	
+	<bqbiol:isRelatedTo>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/bigg.metabolite:5mta"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:12055"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:12064"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:12771"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:14605"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:1966"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:1986"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:20491"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:20494"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:44181"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB0001173"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB01173"/>
+	<rdf:li rdf:resource="https://identifiers.org/kegg.compound:C00170"/>
+	<rdf:li rdf:resource="https://identifiers.org/biocyc:META:5-METHYLTHIOADENOSINE"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-353106"/>
+	<rdf:li rdf:resource="https://identifiers.org/sabiork.compound:1960"/>
+	<rdf:li rdf:resource="https://identifiers.org/seed.compound:cpd00147"/>
+	<rdf:li rdf:resource="https://identifiers.org/metanetx.chemical:MNXM1101977"/>
+	</rdf:Bag>
+	</bqbiol:isRelatedTo>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </species>
+      <species boundaryCondition="false" compartment="MNXD1" constant="false" fbc:charge="-2" fbc:chemicalFormula="C6H11O7PS" hasOnlySubstanceUnits="false" id="MNXM1103415__64__MNXD1" metaid="_319f0b8a-0738-4ae6-a2ab-3c05b9aeeb60" name="S-methyl-5-thio-alpha-D-ribose 1-phosphate">
+        <notes>
+          <html:p>COMPOUND_ID: MNXM1103415</html:p><html:p>SOURCE: chebi:58533</html:p><html:p>FORMULA: C6H11O7PS</html:p><html:p>MASS: 257.99741</html:p><html:p>CHARGE: -2</html:p><html:p>XREFS: chebi:58533;CHEBI:27859;CHEBI:58533;bigg.metabolite:5mdr1p;biggM:5mdr1p;biggM:M_5mdr1p;chebi:12767;chebi:12769;chebi:12770;chebi:20614;chebi:20616;chebi:2102;chebi:27859;chebi:30309;chebi:30310;kegg.compound:C04188;keggC:C04188;keggC:M_C04188;metacyc.compound:CPD-444;metacycM:CPD-444;reactome:R-ALL-1237165;reactomeM:R-ALL-1237165;sabiork.compound:1642;sabiorkM:1642;seed.compound:cpd02574;seedM:M_cpd02574;seedM:cpd02574</html:p><html:p>REFERENCE: chebi:58533</html:p>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_319f0b8a-0738-4ae6-a2ab-3c05b9aeeb60">
+              <bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:58533"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	
+	<bqbiol:isRelatedTo>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/bigg.metabolite:5mdr1p"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:12767"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:12769"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:12770"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:20614"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:20616"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:2102"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:27859"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:30309"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:30310"/>
+	<rdf:li rdf:resource="https://identifiers.org/kegg.compound:C04188"/>
+	<rdf:li rdf:resource="https://identifiers.org/biocyc:META:CPD-444"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-1237165"/>
+	<rdf:li rdf:resource="https://identifiers.org/sabiork.compound:1642"/>
+	<rdf:li rdf:resource="https://identifiers.org/seed.compound:cpd02574"/>
+	<rdf:li rdf:resource="https://identifiers.org/metanetx.chemical:MNXM1103415"/>
+	</rdf:Bag>
+	</bqbiol:isRelatedTo>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </species>
+      <species boundaryCondition="false" compartment="MNXD1" constant="false" fbc:charge="0" fbc:chemicalFormula="C5H5N5" hasOnlySubstanceUnits="false" id="MNXM168__64__MNXD1" metaid="_21bd55b2-cf3d-4de1-8183-80c5be853f2b" name="adenine">
+        <notes>
+          <html:p>COMPOUND_ID: MNXM168</html:p><html:p>SOURCE: chebi:16708</html:p><html:p>FORMULA: C5H5N5</html:p><html:p>MASS: 135.05450</html:p><html:p>CHARGE: 0</html:p><html:p>XREFS: chebi:16708;CHEBI:16708;bigg.metabolite:ade;biggM:M_ade;biggM:ade;chebi:13733;chebi:22236;chebi:2470;chebi:40579;envipath:650babc9-9d68-4b73-9332-11972ca26f7b/compound/4ab4c6d9-e6db-488c-811b-5df69471d1ef;envipathM:650babc9-9d68-4b73-9332-11972ca26f7b/compound/4ab4c6d9-e6db-488c-811b-5df69471d1ef;hmdb:HMDB0000034;hmdb:HMDB00034;kegg.compound:C00147;kegg.drug:D00034;keggC:C00147;keggC:M_C00147;keggD:D00034;keggD:M_D00034;metacyc.compound:ADENINE;metacyc.compound:ADENINE-RING;metacycM:ADENINE;metacycM:ADENINE-RING;reactome:R-ALL-5635947;reactome:R-ALL-727751;reactome:R-ALL-83947;reactome:R-ALL-83951;reactomeM:R-ALL-5635947;reactomeM:R-ALL-727751;reactomeM:R-ALL-83947;reactomeM:R-ALL-83951;sabiork.compound:57;sabiorkM:57;seed.compound:cpd00128;seed.compound:cpd22238;seedM:M_cpd00128;seedM:M_cpd22238;seedM:cpd00128;seedM:cpd22238</html:p><html:p>REFERENCE: chebi:16708</html:p>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_21bd55b2-cf3d-4de1-8183-80c5be853f2b">
+              <bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:16708"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	
+	<bqbiol:isRelatedTo>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/bigg.metabolite:ade"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:13733"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:22236"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:2470"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:40579"/>
+	<rdf:li rdf:resource="https://identifiers.org/envipath:650babc9-9d68-4b73-9332-11972ca26f7b/compound/4ab4c6d9-e6db-488c-811b-5df69471d1ef"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB0000034"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB00034"/>
+	<rdf:li rdf:resource="https://identifiers.org/kegg.compound:C00147"/>
+	<rdf:li rdf:resource="https://identifiers.org/kegg.drug:D00034"/>
+	<rdf:li rdf:resource="https://identifiers.org/biocyc:META:ADENINE"/>
+	<rdf:li rdf:resource="https://identifiers.org/biocyc:META:ADENINE-RING"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-5635947"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-727751"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-83947"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-83951"/>
+	<rdf:li rdf:resource="https://identifiers.org/sabiork.compound:57"/>
+	<rdf:li rdf:resource="https://identifiers.org/seed.compound:cpd00128"/>
+	<rdf:li rdf:resource="https://identifiers.org/seed.compound:cpd22238"/>
+	<rdf:li rdf:resource="https://identifiers.org/metanetx.chemical:MNXM168"/>
+	</rdf:Bag>
+	</bqbiol:isRelatedTo>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </species>
+      <species boundaryCondition="false" compartment="MNXD1" constant="false" fbc:charge="1" fbc:chemicalFormula="H" hasOnlySubstanceUnits="false" id="MNXM1__64__MNXD1" metaid="_5bd012e3-ef81-4128-a159-86bf8d753250" name="H(+)">
+        <notes>
+          <html:p>COMPOUND_ID: MNXM1</html:p><html:p>SOURCE: chebi:15378</html:p><html:p>FORMULA: H</html:p><html:p>MASS: 1.00794</html:p><html:p>CHARGE: 1</html:p><html:p>XREFS: mnx:PROTON;CHEBI:15378;CHEBI:24636;CHEBI:29233;CHEBI:29234;MNXM1;bigg.metabolite:h;biggM:M_h;biggM:h;chebi:10744;chebi:13357;chebi:15378;chebi:24636;chebi:29233;chebi:29234;chebi:5584;hmdb:HMDB0059597;hmdb:HMDB59597;kegg.compound:C00080;keggC:C00080;keggC:M_C00080;metacyc.compound:PROTON;metacycM:PROTON;reactome:R-ALL-1132304;reactome:R-ALL-113529;reactome:R-ALL-1470067;reactome:R-ALL-156540;reactome:R-ALL-1614597;reactome:R-ALL-163953;reactome:R-ALL-193465;reactome:R-ALL-194688;reactome:R-ALL-2000349;reactome:R-ALL-2429673;reactome:R-ALL-2872447;reactome:R-ALL-351626;reactome:R-ALL-372511;reactome:R-ALL-374900;reactome:R-ALL-425969;reactome:R-ALL-425978;reactome:R-ALL-425999;reactome:R-ALL-427899;reactome:R-ALL-428040;reactome:R-ALL-428548;reactome:R-ALL-5228597;reactome:R-ALL-5244410;reactome:R-ALL-5668577;reactome:R-ALL-70106;reactome:R-ALL-74722;reactomeM:R-ALL-1132304;reactomeM:R-ALL-113529;reactomeM:R-ALL-1470067;reactomeM:R-ALL-156540;reactomeM:R-ALL-1614597;reactomeM:R-ALL-163953;reactomeM:R-ALL-193465;reactomeM:R-ALL-194688;reactomeM:R-ALL-2000349;reactomeM:R-ALL-2429673;reactomeM:R-ALL-2872447;reactomeM:R-ALL-351626;reactomeM:R-ALL-372511;reactomeM:R-ALL-374900;reactomeM:R-ALL-425969;reactomeM:R-ALL-425978;reactomeM:R-ALL-425999;reactomeM:R-ALL-427899;reactomeM:R-ALL-428040;reactomeM:R-ALL-428548;reactomeM:R-ALL-5228597;reactomeM:R-ALL-5244410;reactomeM:R-ALL-5668577;reactomeM:R-ALL-70106;reactomeM:R-ALL-74722;sabiork.compound:39;sabiorkM:39;seed.compound:cpd00067;seedM:M_cpd00067;seedM:cpd00067</html:p><html:p>REFERENCE: mnx:PROTON</html:p>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_5bd012e3-ef81-4128-a159-86bf8d753250">
+              <bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/bigg.metabolite:h"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	
+	<bqbiol:isRelatedTo>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:10744"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:13357"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:15378"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:24636"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:29233"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:29234"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:5584"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB0059597"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB59597"/>
+	<rdf:li rdf:resource="https://identifiers.org/kegg.compound:C00080"/>
+	<rdf:li rdf:resource="https://identifiers.org/biocyc:META:PROTON"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-1132304"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-113529"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-1470067"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-156540"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-1614597"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-163953"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-193465"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-194688"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-2000349"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-2429673"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-2872447"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-351626"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-372511"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-374900"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-425969"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-425978"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-425999"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-427899"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-428040"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-428548"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-5228597"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-5244410"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-5668577"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-70106"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-74722"/>
+	<rdf:li rdf:resource="https://identifiers.org/sabiork.compound:39"/>
+	<rdf:li rdf:resource="https://identifiers.org/seed.compound:cpd00067"/>
+	<rdf:li rdf:resource="https://identifiers.org/metanetx.chemical:MNXM1"/>
+	</rdf:Bag>
+	</bqbiol:isRelatedTo>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </species>
+      <species boundaryCondition="false" compartment="MNXD1" constant="false" fbc:charge="-1" fbc:chemicalFormula="C5H7O3S" hasOnlySubstanceUnits="false" id="MNXM276__64__MNXD1" metaid="f55b754e-f40a-4438-bccc-ac723c998651" name="4-methylsulfanyl-2-oxobutanoate">
+        <notes>
+          <html:p>COMPOUND_ID: MNXM276</html:p><html:p>SOURCE: chebi:16723</html:p><html:p>FORMULA: C5H7O3S</html:p><html:p>MASS: 147.01214</html:p><html:p>CHARGE: -1</html:p><html:p>XREFS: chebi:16723;CHEBI:16723;CHEBI:33574;bigg.metabolite:2kmb;bigg.metabolite:4met2obut;bigg.metabolite:4mtob;biggM:2kmb;biggM:4met2obut;biggM:4mtob;biggM:M_2kmb;biggM:M_4met2obut;biggM:M_4mtob;chebi:12029;chebi:1902;chebi:20451;chebi:22458;chebi:33574;chebi:43720;chebi:63388;envipath:650babc9-9d68-4b73-9332-11972ca26f7b/compound/cde10e04-841a-4e6a-b8aa-96f2ff9362e2;envipathM:650babc9-9d68-4b73-9332-11972ca26f7b/compound/cde10e04-841a-4e6a-b8aa-96f2ff9362e2;hmdb:HMDB0001553;hmdb:HMDB0013210;hmdb:HMDB01553;hmdb:HMDB13210;kegg.compound:C01180;keggC:C01180;keggC:M_C01180;lipidmaps:LMFA01060170;lipidmapsM:LMFA01060170;metacyc.compound:CPD-479;metacycM:CPD-479;reactome:R-ALL-1237122;reactomeM:R-ALL-1237122;sabiork.compound:5424;sabiorkM:5424;seed.compound:cpd00869;seedM:M_cpd00869;seedM:cpd00869</html:p><html:p>REFERENCE: chebi:16723</html:p>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#f55b754e-f40a-4438-bccc-ac723c998651">
+              <bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:16723"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	
+	<bqbiol:isRelatedTo>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/bigg.metabolite:2kmb"/>
+	<rdf:li rdf:resource="https://identifiers.org/bigg.metabolite:4met2obut"/>
+	<rdf:li rdf:resource="https://identifiers.org/bigg.metabolite:4mtob"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:12029"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:1902"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:20451"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:22458"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:33574"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:43720"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:63388"/>
+	<rdf:li rdf:resource="https://identifiers.org/envipath:650babc9-9d68-4b73-9332-11972ca26f7b/compound/cde10e04-841a-4e6a-b8aa-96f2ff9362e2"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB0001553"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB0013210"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB01553"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB13210"/>
+	<rdf:li rdf:resource="https://identifiers.org/kegg.compound:C01180"/>
+	<rdf:li rdf:resource="https://identifiers.org/lipidmaps:LMFA01060170"/>
+	<rdf:li rdf:resource="https://identifiers.org/biocyc:META:CPD-479"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-1237122"/>
+	<rdf:li rdf:resource="https://identifiers.org/sabiork.compound:5424"/>
+	<rdf:li rdf:resource="https://identifiers.org/seed.compound:cpd00869"/>
+	<rdf:li rdf:resource="https://identifiers.org/metanetx.chemical:MNXM276"/>
+	</rdf:Bag>
+	</bqbiol:isRelatedTo>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </species>
+      <species boundaryCondition="false" compartment="MNXD1" constant="false" fbc:charge="-1" fbc:chemicalFormula="CHO2" hasOnlySubstanceUnits="false" id="MNXM39__64__MNXD1" metaid="c5a0b1ba-3937-460e-8412-30591cea244e" name="formate">
+        <notes>
+          <html:p>COMPOUND_ID: MNXM39</html:p><html:p>SOURCE: chebi:15740</html:p><html:p>FORMULA: CHO2</html:p><html:p>MASS: 44.99820</html:p><html:p>CHARGE: -1</html:p><html:p>XREFS: chebi:15740;CHEBI:15740;CHEBI:30751;bigg.metabolite:for;biggM:M_for;biggM:for;chebi:14276;chebi:24081;chebi:24082;chebi:30751;chebi:42460;chebi:5145;envipath:32de3cf4-e3e6-4168-956e-32fa5ddb0ce1/compound/09c1ad08-016e-4477-8840-b97a031eae23;envipath:4fd7f3e0-dd25-43ac-9453-dda3e52396e4/compound/bf16ab32-cb3c-4427-a65a-089ab754823e;envipath:5882df9c-dae1-4d80-a40e-db4724271456/compound/34fe3cd9-9b0b-46b0-a1c5-8a66509f1919;envipath:650babc9-9d68-4b73-9332-11972ca26f7b/compound/9a9d20ae-b6ec-40a9-93ca-1de20597b1ed;envipath:d817c31c-d879-44c8-913d-2963d42f8203/compound/fe596606-cac1-4578-816e-dd96e25081da;envipathM:32de3cf4-e3e6-4168-956e-32fa5ddb0ce1/compound/09c1ad08-016e-4477-8840-b97a031eae23;envipathM:4fd7f3e0-dd25-43ac-9453-dda3e52396e4/compound/bf16ab32-cb3c-4427-a65a-089ab754823e;envipathM:5882df9c-dae1-4d80-a40e-db4724271456/compound/34fe3cd9-9b0b-46b0-a1c5-8a66509f1919;envipathM:650babc9-9d68-4b73-9332-11972ca26f7b/compound/9a9d20ae-b6ec-40a9-93ca-1de20597b1ed;envipathM:d817c31c-d879-44c8-913d-2963d42f8203/compound/fe596606-cac1-4578-816e-dd96e25081da;hmdb:HMDB0000142;hmdb:HMDB00142;kegg.compound:C00058;keggC:C00058;keggC:M_C00058;metacyc.compound:CARBOXYL-GROUP;metacyc.compound:CPD1G-1532;metacyc.compound:CPD1G-1533;metacyc.compound:CPD1G-1534;metacyc.compound:CPD1G-1535;metacyc.compound:FORMATE;metacycM:CARBOXYL-GROUP;metacycM:CPD1G-1532;metacycM:CPD1G-1533;metacycM:CPD1G-1534;metacycM:CPD1G-1535;metacycM:FORMATE;reactome:R-ALL-29460;reactome:R-ALL-389585;reactome:R-ALL-444084;reactomeM:R-ALL-29460;reactomeM:R-ALL-389585;reactomeM:R-ALL-444084;sabiork.compound:1285;sabiorkM:1285;seed.compound:cpd00047;seed.compound:cpd22511;seedM:M_cpd00047;seedM:M_cpd22511;seedM:cpd00047;seedM:cpd22511</html:p><html:p>REFERENCE: chebi:15740</html:p>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#c5a0b1ba-3937-460e-8412-30591cea244e">
+              <bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:15740"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	
+	<bqbiol:isRelatedTo>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/bigg.metabolite:for"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:14276"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:24081"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:24082"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:30751"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:42460"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:5145"/>
+	<rdf:li rdf:resource="https://identifiers.org/envipath:32de3cf4-e3e6-4168-956e-32fa5ddb0ce1/compound/09c1ad08-016e-4477-8840-b97a031eae23"/>
+	<rdf:li rdf:resource="https://identifiers.org/envipath:4fd7f3e0-dd25-43ac-9453-dda3e52396e4/compound/bf16ab32-cb3c-4427-a65a-089ab754823e"/>
+	<rdf:li rdf:resource="https://identifiers.org/envipath:5882df9c-dae1-4d80-a40e-db4724271456/compound/34fe3cd9-9b0b-46b0-a1c5-8a66509f1919"/>
+	<rdf:li rdf:resource="https://identifiers.org/envipath:650babc9-9d68-4b73-9332-11972ca26f7b/compound/9a9d20ae-b6ec-40a9-93ca-1de20597b1ed"/>
+	<rdf:li rdf:resource="https://identifiers.org/envipath:d817c31c-d879-44c8-913d-2963d42f8203/compound/fe596606-cac1-4578-816e-dd96e25081da"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB0000142"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB00142"/>
+	<rdf:li rdf:resource="https://identifiers.org/kegg.compound:C00058"/>
+	<rdf:li rdf:resource="https://identifiers.org/biocyc:META:CARBOXYL-GROUP"/>
+	<rdf:li rdf:resource="https://identifiers.org/biocyc:META:CPD1G-1532"/>
+	<rdf:li rdf:resource="https://identifiers.org/biocyc:META:CPD1G-1533"/>
+	<rdf:li rdf:resource="https://identifiers.org/biocyc:META:CPD1G-1534"/>
+	<rdf:li rdf:resource="https://identifiers.org/biocyc:META:CPD1G-1535"/>
+	<rdf:li rdf:resource="https://identifiers.org/biocyc:META:FORMATE"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-29460"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-389585"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-444084"/>
+	<rdf:li rdf:resource="https://identifiers.org/sabiork.compound:1285"/>
+	<rdf:li rdf:resource="https://identifiers.org/seed.compound:cpd00047"/>
+	<rdf:li rdf:resource="https://identifiers.org/seed.compound:cpd22511"/>
+	<rdf:li rdf:resource="https://identifiers.org/metanetx.chemical:MNXM39"/>
+	</rdf:Bag>
+	</bqbiol:isRelatedTo>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </species>
+      <species boundaryCondition="false" compartment="MNXD1" constant="false" fbc:charge="0" fbc:chemicalFormula="C6H10O3S" hasOnlySubstanceUnits="false" id="MNXM494__64__MNXD1" metaid="_70ee2908-7057-4a69-ad19-36b55e1506b1" name="1,2-dihydroxy-5-(methylsulfanyl)pent-1-en-3-one">
+        <notes>
+          <html:p>COMPOUND_ID: MNXM494</html:p><html:p>SOURCE: chebi:49252</html:p><html:p>FORMULA: C6H10O3S</html:p><html:p>MASS: 162.03507</html:p><html:p>CHARGE: 0</html:p><html:p>XREFS: chebi:49252;CHEBI:49252;CHEBI:58795;bigg.metabolite:12d3k5m;bigg.metabolite:M00245;bigg.metabolite:dhmtp;biggM:12d3k5m;biggM:M00245;biggM:M_12d3k5m;biggM:M_M00245;biggM:M_dhmtp;biggM:dhmtp;chebi:58795;hmdb:HMDB0012134;hmdb:HMDB12134;kegg.compound:C15606;keggC:C15606;keggC:M_C15606;metacyc.compound:CPD-85;metacycM:CPD-85;reactome:R-ALL-1237155;reactomeM:R-ALL-1237155;seed.compound:cpd11255;seedM:M_cpd11255;seedM:cpd11255</html:p><html:p>REFERENCE: chebi:49252</html:p>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_70ee2908-7057-4a69-ad19-36b55e1506b1">
+              <bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:49252"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	
+	<bqbiol:isRelatedTo>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/bigg.metabolite:12d3k5m"/>
+	<rdf:li rdf:resource="https://identifiers.org/bigg.metabolite:M00245"/>
+	<rdf:li rdf:resource="https://identifiers.org/bigg.metabolite:dhmtp"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:58795"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB0012134"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB12134"/>
+	<rdf:li rdf:resource="https://identifiers.org/kegg.compound:C15606"/>
+	<rdf:li rdf:resource="https://identifiers.org/biocyc:META:CPD-85"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-1237155"/>
+	<rdf:li rdf:resource="https://identifiers.org/seed.compound:cpd11255"/>
+	<rdf:li rdf:resource="https://identifiers.org/metanetx.chemical:MNXM494"/>
+	</rdf:Bag>
+	</bqbiol:isRelatedTo>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </species>
+      <species boundaryCondition="false" compartment="MNXD1" constant="false" fbc:charge="0" fbc:chemicalFormula="O2" hasOnlySubstanceUnits="false" id="MNXM735438__64__MNXD1" metaid="ca229e29-544f-4302-bc01-3a542f0d132a" name="O2">
+        <notes>
+          <html:p>COMPOUND_ID: MNXM735438</html:p><html:p>SOURCE: chebi:15379</html:p><html:p>FORMULA: O2</html:p><html:p>MASS: 31.98983</html:p><html:p>CHARGE: 0</html:p><html:p>XREFS: chebi:15379;CHEBI:15379;CHEBI:26689;CHEBI:29793;bigg.metabolite:o2;biggM:M_o2;biggM:o2;chebi:10745;chebi:13416;chebi:23833;chebi:25366;chebi:26689;chebi:29793;chebi:30491;chebi:44742;chebi:7860;envipath:d817c31c-d879-44c8-913d-2963d42f8203/compound/d0a80c13-93c9-453c-b154-05dfbeb20cc1;envipathM:d817c31c-d879-44c8-913d-2963d42f8203/compound/d0a80c13-93c9-453c-b154-05dfbeb20cc1;hmdb:HMDB0001377;hmdb:HMDB01377;kegg.compound:C00007;kegg.drug:D00003;keggC:C00007;keggC:M_C00007;keggD:D00003;keggD:M_D00003;metacyc.compound:OXYGEN-MOLECULE;metacycM:OXYGEN-MOLECULE;reactome:R-ALL-113533;reactome:R-ALL-113534;reactome:R-ALL-113535;reactome:R-ALL-113685;reactome:R-ALL-1236709;reactome:R-ALL-189461;reactome:R-ALL-2230955;reactome:R-ALL-29368;reactome:R-ALL-351593;reactome:R-ALL-352327;reactome:R-ALL-5668566;reactomeM:R-ALL-113533;reactomeM:R-ALL-113534;reactomeM:R-ALL-113535;reactomeM:R-ALL-113685;reactomeM:R-ALL-1236709;reactomeM:R-ALL-189461;reactomeM:R-ALL-2230955;reactomeM:R-ALL-29368;reactomeM:R-ALL-351593;reactomeM:R-ALL-352327;reactomeM:R-ALL-5668566;sabiork.compound:1264;sabiorkM:1264;seed.compound:cpd00007;seedM:M_cpd00007;seedM:cpd00007</html:p><html:p>REFERENCE: chebi:15379</html:p>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#ca229e29-544f-4302-bc01-3a542f0d132a">
+              <bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:15379"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	
+	<bqbiol:isRelatedTo>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/bigg.metabolite:o2"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:10745"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:13416"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:23833"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:25366"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:26689"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:29793"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:30491"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:44742"/>
+	<rdf:li rdf:resource="https://identifiers.org/CHEBI:7860"/>
+	<rdf:li rdf:resource="https://identifiers.org/envipath:d817c31c-d879-44c8-913d-2963d42f8203/compound/d0a80c13-93c9-453c-b154-05dfbeb20cc1"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB0001377"/>
+	<rdf:li rdf:resource="https://identifiers.org/hmdb:HMDB01377"/>
+	<rdf:li rdf:resource="https://identifiers.org/kegg.compound:C00007"/>
+	<rdf:li rdf:resource="https://identifiers.org/kegg.drug:D00003"/>
+	<rdf:li rdf:resource="https://identifiers.org/biocyc:META:OXYGEN-MOLECULE"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-113533"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-113534"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-113535"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-113685"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-1236709"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-189461"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-2230955"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-29368"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-351593"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-352327"/>
+	<rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-5668566"/>
+	<rdf:li rdf:resource="https://identifiers.org/sabiork.compound:1264"/>
+	<rdf:li rdf:resource="https://identifiers.org/seed.compound:cpd00007"/>
+	<rdf:li rdf:resource="https://identifiers.org/metanetx.chemical:MNXM735438"/>
+	</rdf:Bag>
+	</bqbiol:isRelatedTo>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </species>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter constant="true" id="cobra_default_lb" sboTerm="SBO:0000626" units="mmol_per_gDW_per_hr" value="-1000"/>
+      <parameter constant="true" id="cobra_default_ub" sboTerm="SBO:0000626" units="mmol_per_gDW_per_hr" value="1000"/>
+    </listOfParameters>
+    <listOfReactions>
+      <reaction fast="false" fbc:lowerFluxBound="cobra_default_lb" fbc:upperFluxBound="cobra_default_ub" id="mnxr165884" metaid="_378240bf-e1b3-4767-8ffd-e8eb86b69a06" reversible="true" sboTerm="SBO:0000375">
+        <notes>
+          <html:p>REACTION: MNXR165884</html:p><html:p>CLASSIFICATION: 6.3.5.7</html:p><html:p>XREFS: rheaR:17521;rhea:17521;rhea:17522;rhea:17523;rhea:17524;rheaR:17522;rheaR:17523;rheaR:17524</html:p><html:p>REFERENCE: rheaR:17521</html:p><html:p>GENE ASSOCIATION: (GATA_TUBMM)</html:p><html:p>PROP BC-b: bidi</html:p><html:p>PROP BC-p: asso</html:p><html:p>PROP BC-t: enzy</html:p>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_378240bf-e1b3-4767-8ffd-e8eb86b69a06">
+              <bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/rhea:17521"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	
+	<bqbiol:isRelatedTo>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/rhea:17522"/>
+	<rdf:li rdf:resource="https://identifiers.org/rhea:17523"/>
+	<rdf:li rdf:resource="https://identifiers.org/rhea:17524"/>
+	<rdf:li rdf:resource="https://identifiers.org/ec-code:6.3.5.7"/>
+	<rdf:li rdf:resource="https://identifiers.org/metanetx.reaction:MNXR165884"/>
+	</rdf:Bag>
+	</bqbiol:isRelatedTo>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+              <fbc:geneProductAssociation xmlns:fbc="http://www.sbml.org/sbml/level3/version1/fbc/version2">
+          <fbc:geneProductRef fbc:geneProduct="G_GATA_TUBMM"/>
+        </fbc:geneProductAssociation>
+        <listOfReactants>
+          <speciesReference constant="true" species="MNXM1091284__64__MNXD1" stoichiometry="1"/>
+          <speciesReference constant="true" species="MNXM37__64__MNXD1" stoichiometry="1"/>
+          <speciesReference constant="true" species="MNXM3__64__MNXD1" stoichiometry="1"/>
+          <speciesReference constant="true" species="WATER__64__MNXD1" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" species="MNXM40333__64__MNXD1" stoichiometry="1"/>
+          <speciesReference constant="true" species="MNXM741173__64__MNXD1" stoichiometry="1"/>
+          <speciesReference constant="true" species="MNXM741205__64__MNXD1" stoichiometry="1"/>
+          <speciesReference constant="true" species="MNXM9__64__MNXD1" stoichiometry="1"/>
+        </listOfProducts>
+      </reaction>
+      <reaction fast="false" fbc:lowerFluxBound="cobra_default_lb" fbc:upperFluxBound="cobra_default_ub" id="mnxr166314" metaid="_6145599c-395f-4ebd-9510-7fcdfa8a0ff3" reversible="true" sboTerm="SBO:0000375">
+        <notes>
+          <html:p>REACTION: MNXR166314</html:p><html:p>CLASSIFICATION: 3.6.1.9</html:p><html:p>XREFS: rheaR:23996;rhea:23996;rhea:23997;rhea:23998;rhea:23999;rheaR:23997;rheaR:23998;rheaR:23999</html:p><html:p>REFERENCE: rheaR:23996</html:p><html:p>GENE ASSOCIATION: (ITPA_TUBMM)</html:p><html:p>PROP BC-b: bidi</html:p><html:p>PROP BC-p: asso</html:p><html:p>PROP BC-t: enzy</html:p>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_6145599c-395f-4ebd-9510-7fcdfa8a0ff3">
+              <bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/rhea:23996"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	
+	<bqbiol:isRelatedTo>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/rhea:23997"/>
+	<rdf:li rdf:resource="https://identifiers.org/rhea:23998"/>
+	<rdf:li rdf:resource="https://identifiers.org/rhea:23999"/>
+	<rdf:li rdf:resource="https://identifiers.org/ec-code:3.6.1.9"/>
+	<rdf:li rdf:resource="https://identifiers.org/metanetx.reaction:MNXR166314"/>
+	</rdf:Bag>
+	</bqbiol:isRelatedTo>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+              <fbc:geneProductAssociation xmlns:fbc="http://www.sbml.org/sbml/level3/version1/fbc/version2">
+          <fbc:geneProductRef fbc:geneProduct="G_ITPA_TUBMM"/>
+        </fbc:geneProductAssociation>
+        <listOfReactants>
+          <speciesReference constant="true" species="MNXM11__64__MNXD1" stoichiometry="1"/>
+          <speciesReference constant="true" species="MNXM737908__64__MNXD1" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" species="MNXM729013__64__MNXD1" stoichiometry="1"/>
+          <speciesReference constant="true" species="WATER__64__MNXD1" stoichiometry="1"/>
+        </listOfProducts>
+      </reaction>
+      <reaction fast="false" fbc:lowerFluxBound="cobra_default_lb" fbc:upperFluxBound="cobra_default_ub" id="mnxr167225" metaid="ce7f27f2-4cb1-46fa-b9b0-bbb70afbdbdd" reversible="true" sboTerm="SBO:0000375">
+        <notes>
+          <html:p>REACTION: MNXR167225</html:p><html:p>CLASSIFICATION: 2.1.1.228</html:p><html:p>XREFS: rheaR:36899;rhea:36899;rhea:36900;rhea:36901;rhea:36902;rheaR:36900;rheaR:36901;rheaR:36902</html:p><html:p>REFERENCE: rheaR:36899</html:p><html:p>GENE ASSOCIATION: (TRM5_TUBMM)</html:p><html:p>PROP BC-b: bidi</html:p><html:p>PROP BC-p: asso</html:p><html:p>PROP BC-t: enzy</html:p>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#ce7f27f2-4cb1-46fa-b9b0-bbb70afbdbdd">
+              <bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/rhea:36899"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	
+	<bqbiol:isRelatedTo>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/rhea:36900"/>
+	<rdf:li rdf:resource="https://identifiers.org/rhea:36901"/>
+	<rdf:li rdf:resource="https://identifiers.org/rhea:36902"/>
+	<rdf:li rdf:resource="https://identifiers.org/ec-code:2.1.1.228"/>
+	<rdf:li rdf:resource="https://identifiers.org/metanetx.reaction:MNXR167225"/>
+	</rdf:Bag>
+	</bqbiol:isRelatedTo>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+              <fbc:geneProductAssociation xmlns:fbc="http://www.sbml.org/sbml/level3/version1/fbc/version2">
+          <fbc:geneProductRef fbc:geneProduct="G_TRM5_TUBMM"/>
+        </fbc:geneProductAssociation>
+        <listOfReactants>
+          <speciesReference constant="true" species="MNXM1089932__64__MNXD1" stoichiometry="1"/>
+          <speciesReference constant="true" species="MNXM1102072__64__MNXD1" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" species="MNXM1089933__64__MNXD1" stoichiometry="1"/>
+          <speciesReference constant="true" species="MNXM1102167__64__MNXD1" stoichiometry="1"/>
+        </listOfProducts>
+      </reaction>
+      <reaction fast="false" fbc:lowerFluxBound="cobra_default_lb" fbc:upperFluxBound="cobra_default_ub" id="mnxr168550" metaid="_06994274-fe20-4d30-b272-c9ca4eff3689" reversible="true" sboTerm="SBO:0000375">
+        <notes>
+          <html:p>REACTION: MNXR168550</html:p><html:p>CLASSIFICATION: 3.6.1.9</html:p><html:p>XREFS: rheaR:44644;rhea:44644;rhea:44645;rhea:44646;rhea:44647;rheaR:44645;rheaR:44646;rheaR:44647</html:p><html:p>REFERENCE: rheaR:44644</html:p><html:p>GENE ASSOCIATION: (ITPA_TUBMM)</html:p><html:p>PROP BC-b: bidi</html:p><html:p>PROP BC-p: asso</html:p><html:p>PROP BC-t: enzy</html:p>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_06994274-fe20-4d30-b272-c9ca4eff3689">
+              <bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/rhea:44644"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	
+	<bqbiol:isRelatedTo>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/rhea:44645"/>
+	<rdf:li rdf:resource="https://identifiers.org/rhea:44646"/>
+	<rdf:li rdf:resource="https://identifiers.org/rhea:44647"/>
+	<rdf:li rdf:resource="https://identifiers.org/ec-code:3.6.1.9"/>
+	<rdf:li rdf:resource="https://identifiers.org/metanetx.reaction:MNXR168550"/>
+	</rdf:Bag>
+	</bqbiol:isRelatedTo>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+              <fbc:geneProductAssociation xmlns:fbc="http://www.sbml.org/sbml/level3/version1/fbc/version2">
+          <fbc:geneProductRef fbc:geneProduct="G_ITPA_TUBMM"/>
+        </fbc:geneProductAssociation>
+        <listOfReactants>
+          <speciesReference constant="true" species="MNXM11__64__MNXD1" stoichiometry="1"/>
+          <speciesReference constant="true" species="MNXM6057__64__MNXD1" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" species="MNXM96330__64__MNXD1" stoichiometry="1"/>
+          <speciesReference constant="true" species="WATER__64__MNXD1" stoichiometry="1"/>
+        </listOfProducts>
+      </reaction>
+      <reaction fast="false" fbc:lowerFluxBound="cobra_default_lb" fbc:upperFluxBound="cobra_default_ub" id="mnxr188451" metaid="_0e508abd-9306-409a-8e71-2ac178e67776" reversible="true" sboTerm="SBO:0000375">
+        <notes>
+          <html:p>REACTION: MNXR188451</html:p><html:p>CLASSIFICATION: 2.4.2.28</html:p><html:p>XREFS: rheaR:11852;bigg.reaction:MTAP;bigg.reaction:R_MTAP;biggR:MTAP;biggR:R_MTAP;kegg.reaction:R01402;keggR:R01402;metacyc.reaction:5-METHYLTHIOADENOSINE-PHOSPHORYLASE-RXN;metacycR:5-METHYLTHIOADENOSINE-PHOSPHORYLASE-RXN;rhea:11852;rhea:11853;rhea:11854;rhea:11855;rheaR:11853;rheaR:11854;rheaR:11855;sabiork.reaction:1594;sabiorkR:1594;seed.reaction:rxn01022;seedR:rxn01022</html:p><html:p>REFERENCE: rheaR:11852</html:p><html:p>GENE ASSOCIATION: (MTAP_TUBMM)</html:p><html:p>PROP BC-b: bidi</html:p><html:p>PROP BC-p: asso</html:p><html:p>PROP BC-t: enzy</html:p>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_0e508abd-9306-409a-8e71-2ac178e67776">
+              <bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/rhea:11852"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	
+	<bqbiol:isRelatedTo>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/bigg.reaction:MTAP"/>
+	<rdf:li rdf:resource="https://identifiers.org/kegg.reaction:R01402"/>
+	<rdf:li rdf:resource="https://identifiers.org/biocyc:META:5-METHYLTHIOADENOSINE-PHOSPHORYLASE-RXN"/>
+	<rdf:li rdf:resource="https://identifiers.org/rhea:11853"/>
+	<rdf:li rdf:resource="https://identifiers.org/rhea:11854"/>
+	<rdf:li rdf:resource="https://identifiers.org/rhea:11855"/>
+	<rdf:li rdf:resource="https://identifiers.org/sabiork.reaction:1594"/>
+	<rdf:li rdf:resource="https://identifiers.org/seed.reaction:rxn01022"/>
+	<rdf:li rdf:resource="https://identifiers.org/ec-code:2.4.2.28"/>
+	<rdf:li rdf:resource="https://identifiers.org/metanetx.reaction:MNXR188451"/>
+	</rdf:Bag>
+	</bqbiol:isRelatedTo>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+              <fbc:geneProductAssociation xmlns:fbc="http://www.sbml.org/sbml/level3/version1/fbc/version2">
+          <fbc:geneProductRef fbc:geneProduct="G_MTAP_TUBMM"/>
+        </fbc:geneProductAssociation>
+        <listOfReactants>
+          <speciesReference constant="true" species="MNXM1101977__64__MNXD1" stoichiometry="1"/>
+          <speciesReference constant="true" species="MNXM9__64__MNXD1" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" species="MNXM1103415__64__MNXD1" stoichiometry="1"/>
+          <speciesReference constant="true" species="MNXM168__64__MNXD1" stoichiometry="1"/>
+        </listOfProducts>
+      </reaction>
+      <reaction fast="false" fbc:lowerFluxBound="cobra_default_lb" fbc:upperFluxBound="cobra_default_ub" id="mnxr95227" metaid="_8baed603-adae-4763-86af-ffe40e231e87" reversible="true" sboTerm="SBO:0000375">
+        <notes>
+          <html:p>REACTION: MNXR95227</html:p><html:p>CLASSIFICATION: 1.13.11.54</html:p><html:p>XREFS: rheaR:24504;bigg.reaction:ACDO;bigg.reaction:ARD;bigg.reaction:ARD_1;bigg.reaction:DKMD2K;bigg.reaction:HMR_5389;bigg.reaction:R_ACDO;bigg.reaction:R_ARD;bigg.reaction:R_ARD_1;bigg.reaction:R_DKMD2K;bigg.reaction:R_HMR_5389;biggR:ACDO;biggR:ARD;biggR:ARD_1;biggR:DKMD2K;biggR:HMR_5389;biggR:R_ACDO;biggR:R_ARD;biggR:R_ARD_1;biggR:R_DKMD2K;biggR:R_HMR_5389;kegg.reaction:R07364;keggR:R07364;metacyc.reaction:R147-RXN;metacycR:R147-RXN;rhea:24504;rhea:24505;rhea:24506;rhea:24507;rheaR:24505;rheaR:24506;rheaR:24507;seed.reaction:rxn05092;seed.reaction:rxn32462;seedR:rxn05092;seedR:rxn32462</html:p><html:p>REFERENCE: rheaR:24504</html:p><html:p>GENE ASSOCIATION: (MTND_TUBMM)</html:p><html:p>PROP BC-b: bidi</html:p><html:p>PROP BC-p: asso</html:p><html:p>PROP BC-t: enzy</html:p>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_8baed603-adae-4763-86af-ffe40e231e87">
+              <bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/rhea:24504"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	
+	<bqbiol:isRelatedTo>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://identifiers.org/bigg.reaction:ACDO"/>
+	<rdf:li rdf:resource="https://identifiers.org/bigg.reaction:ARD"/>
+	<rdf:li rdf:resource="https://identifiers.org/bigg.reaction:ARD_1"/>
+	<rdf:li rdf:resource="https://identifiers.org/bigg.reaction:DKMD2K"/>
+	<rdf:li rdf:resource="https://identifiers.org/bigg.reaction:HMR_5389"/>
+	<rdf:li rdf:resource="https://identifiers.org/kegg.reaction:R07364"/>
+	<rdf:li rdf:resource="https://identifiers.org/biocyc:META:R147-RXN"/>
+	<rdf:li rdf:resource="https://identifiers.org/rhea:24505"/>
+	<rdf:li rdf:resource="https://identifiers.org/rhea:24506"/>
+	<rdf:li rdf:resource="https://identifiers.org/rhea:24507"/>
+	<rdf:li rdf:resource="https://identifiers.org/seed.reaction:rxn05092"/>
+	<rdf:li rdf:resource="https://identifiers.org/seed.reaction:rxn32462"/>
+	<rdf:li rdf:resource="https://identifiers.org/ec-code:1.13.11.54"/>
+	<rdf:li rdf:resource="https://identifiers.org/metanetx.reaction:MNXR95227"/>
+	</rdf:Bag>
+	</bqbiol:isRelatedTo>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+              <fbc:geneProductAssociation xmlns:fbc="http://www.sbml.org/sbml/level3/version1/fbc/version2">
+          <fbc:geneProductRef fbc:geneProduct="G_MTND_TUBMM"/>
+        </fbc:geneProductAssociation>
+        <listOfReactants>
+          <speciesReference constant="true" species="MNXM1__64__MNXD1" stoichiometry="2"/>
+          <speciesReference constant="true" species="MNXM276__64__MNXD1" stoichiometry="1"/>
+          <speciesReference constant="true" species="MNXM39__64__MNXD1" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" species="MNXM494__64__MNXD1" stoichiometry="1"/>
+          <speciesReference constant="true" species="MNXM735438__64__MNXD1" stoichiometry="1"/>
+        </listOfProducts>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

@@ -17,8 +17,6 @@ from multiprocessing import Process, Lock
 import time 
 
 
-# ceshi
-# test
 def add_rxn(rxn_name, rxn_expression, model):
     """
     Add the reaction to the model.
