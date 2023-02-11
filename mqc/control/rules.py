@@ -300,10 +300,10 @@ class Rules():
         # polysaccharide hydrolysis
         for rxn in model_info['reactions']:
             if rxn['id'] not in model_info['exchange_rxns'] and rxn['id'] not in model_info['transport_rxns']:
-                if len(set(sugar) & set(rxn['reactants_mets'])) == 1 and len(set(H2O) & set(rxn['reactants_mets'])) != 0:
+                if len(set(sugar) & set(rxn['reactants_mets'])) == 1 and len(set(H2O_NAME) & set(rxn['reactants_mets'])) != 0:
                     if rxn['bounds'] == [-1000,1000] or rxn['bounds'] == [-1000,0]:
                         rxn["rules"]["sugar_hydrolysis_rxn"] = "true"
-                if len(set(sugar) & set(rxn['products_mets'])) == 1 and len(set(H2O) & set(rxn['products_mets'])) != 0:
+                if len(set(sugar) & set(rxn['products_mets'])) == 1 and len(set(H2O_NAME) & set(rxn['products_mets'])) != 0:
                     if rxn['bounds'] == [-1000,1000] or rxn['bounds'] == [0,1000]:
                         rxn["rules"]["sugar_hydrolysis_rxn"] = "true"
 
@@ -321,13 +321,161 @@ class Rules():
         """
         for rxn in model_info['reactions']:
             if rxn['id'] not in model_info['exchange_rxns']:
-                if len(set(H2O) & set(rxn['reactants_mets'])) != 0:
+                if len(set(H2O_NAME) & set(rxn['reactants_mets'])) != 0:
                     for r_m in rxn['reactants_mets']:
                         if re.search(r'triphosphate|diphosphate',r_m) and rxn['bounds'][0] == -1000: 
                             if len(set(PI_NAME) & set(rxn['products_mets'])) != 0 or len(set(PPI_NAME) & set(rxn['products_mets'])) != 0:
                                 rxn["rules"]["ppi_h2o"] = "true"       
-                if len(set(H2O) & set(rxn['products_mets'])) != 0:            
+                if len(set(H2O_NAME) & set(rxn['products_mets'])) != 0:            
                     for p_m in rxn['products_mets']:
                         if re.search(r'triphosphate|diphosphate',p_m) and rxn['bounds'][1] == 1000: 
                             if len(set(PI_NAME) & set(rxn['reactants_mets'])) != 0 or len(set(PPI_NAME) & set(rxn['reactants_mets'])) != 0:
-                                rxn["rules"]["ppi_h2o"] = "true"             
+                                rxn["rules"]["ppi_h2o"] = "true"          
+
+    def find_acyl_h2o(model_info):
+        """
+        Acyl-CoA is hydrolyzed to produce CoA
+        """
+        for rxn in model_info['reactions']:
+            if rxn['id'] not in model_info['exchange_rxns']:
+                if len(set(H2O_NAME) & set(rxn['reactants_mets'])) != 0 and  len(set(YLCOA) & set(rxn['reactants_mets'])) != 0 and len(rxn['reactants_mets']) ==2 and len(set(COA) & set(rxn['products_mets'])) != 0:
+                    if rxn['bounds'] == [-1000,1000] or rxn['bounds'] == [-1000,0]:
+                        rxn["rules"]["acyl_h2o"] = "true"                          
+                if len(set(H2O_NAME) & set(rxn['products_mets'])) != 0 and len(set(YLCOA) & set(rxn['products_mets']))!= 0 and len(rxn['products_mets']) == 2 and len(set(COA) & set(rxn['reactants_mets'])) != 0:
+                    if rxn['bounds'] == [-1000,1000] or rxn['bounds'] == ['0,1000']:
+                        rxn["rules"]["acyl_h2o"] = "true"                                  
+
+    def find_ac_acid(model_info):
+        """
+        In addition to the reaction of acetic acid and high-energy substances (atp, acyl-CoA) substances, the reaction containing acetic acid is the direction of generating acetic acid
+        """
+        for rxn in model_info['reactions']:
+            if rxn['id'] not in model_info['exchange_rxns'] and rxn['id'] not in model_info['transport_rxns']:
+                if len(set(AC) & set(rxn['products_mets'])) != 0:
+                    if len(set(ATP_NAME) & set(rxn['products_mets'])) == 0 and len(set(rxn['products_mets']) & set(YLCOA)) == 0:
+                        if rxn['bounds'] == [-1000,1000] or rxn['bounds'] == [-1000,0]:
+                            rxn["rules"]["ac_acid"] = "true" 
+                if len(set(AC) & set(rxn['reactants_mets'])) != 0:
+                    if len(set(ATP_NAME) & set(rxn['reactants_mets'])) == 0 and len(set(rxn['reactants_mets']) & set(YLCOA)) == 0:
+                        if rxn['bounds'] == [-1000,1000] or rxn['bounds'] == [0,1000]:
+                            rxn["rules"]["ac_acid"] = "true"  
+
+    def find_h2o2_rxn(model_info, model):
+        """
+        When hydrogen peroxide reacts with reducing substances (nadh, ndph, Reduced glutathione, Reduced thioredoxin, Ferrocytochrome c-553), it is irreversible
+        """
+        for rxn in model_info['reactions']:
+            if rxn['id'] not in model_info['exchange_rxns']:
+                rxnId = model.reactions.get_by_id(rxn['id'])
+                reactants_mets_name = [met.name for met in rxnId.reactants]
+                products_mets_name = [met.name for met in rxnId.products]      
+                if 'Hydrogen peroxide' in reactants_mets_name and len(rxn['reactants_mets']) == 2:
+                    if len(set(NADH) & set(rxn['reactants_mets'])) != 0 or len(set(NADPH) & set(rxn['reactants_mets'])) != 0 or len(set(H2O2_REDUCED) & set(reactants_mets_name)) != 0:
+                        if rxn['bounds'] == [-1000,1000] or rxn['bounds'] == [-1000,0]:
+                            rxn["rules"]["h2o2_rxn"] = "true"     
+                if 'Hydrogen peroxide' in products_mets_name and len(rxn['products_mets']) == 2:
+                    if len(set(NADH) & set(rxn['products_mets'])) != 0 or len(set(NADPH) & set(rxn['products_mets'])) != 0 or len(set(H2O2_REDUCED) & set(products_mets_name)) != 0:
+                        if rxn['bounds'] == [-1000,1000] or rxn['bounds'] == [0,1000]:    
+                            rxn["rules"]["h2o2_rxn"] = "true"   
+
+    def find_fe3_fe2_rxn(model_info):
+        """
+        Fe3 reacts with nadh and fadh2 to Fe2, which is irreversible
+        """
+        for rxn in model_info['reactions']:
+            if rxn['id'] not in model_info['exchange_rxns']:
+                if len(set(FE3) & set(rxn['reactants_mets'])) != 0 and len(set(FE2) & set(rxn['products_mets'])) != 0:
+                    if len(set(NADH) & set(rxn['reactants_mets'])) != 0 or len(set(FADH2) & set(rxn['reactants_mets'])) != 0:
+                        if rxn['bounds'] == [-1000,1000] or rxn['bounds'] == [-1000,0]:
+                            rxn["rules"]["fe3_fe2_rxn"] = "true"  
+                
+                if len(set(FE3) & set(rxn['products_mets'])) != 0 and len(set(FE2) & set(rxn['reactants_mets'])) != 0:
+                    if len(set(NADH) & set(rxn['products_mets'])) != 0 or len(set(FADH2) & set(rxn['products_mets'])) != 0:
+                        if rxn['bounds'] == [-1000,1000] or rxn['bounds'] == [0,1000]:
+                            rxn["rules"]["fe3_fe2_rxn"] = "true"     
+
+    def find_ate_met(model_info):
+        """
+        Acquire acid metabolites
+        """
+        ate_met = []  # acid metabolites
+        for met in model_info['metabolites']:
+            if met['name'].endswith('ate') or met['name'].split(' (')[0].endswith('ate') or met['name'].endswith('Acid') or met['name'].endswith('acid'):
+                ate_met.append(met['name'])
+        return ate_met    
+
+    def find_aldehyde_met(model_info):
+        """
+        Access to aldehyde metabolites
+        """
+        aldehyde_met = [] # aldehyde metabolites
+        for met in model_info['metabolites']:
+            if met['name'].endswith('aldehyde') or met['name'].endswith('anal') or re.search(r'Erythrose|erythrose',met['name']):
+                aldehyde_met.append(met['name'])
+        return aldehyde_met         
+
+    def find_aldehyde_ate_rxn(self, model_info):
+        """
+        Acyl-CoA is hydrolyzed to produce CoA
+        """
+        ate_met = self.find_ate_met(model_info)
+        aldehyde_met = self.find_aldehyde_met(model_info)      
+        for rxn in model_info['reactions']:
+            if rxn['id'] not in model_info['exchange_rxns']:
+                if len(set(NAD_NADP_FDXO) & rxn['reactants_mets']):
+                    if len(set(rxn['reactants_mets']) & set(aldehyde_met)) != 0 and len(set(H2O_NAME) & set(rxn['reactants_mets'])) != 0 and len(set(rxn['products_mets']) & set(ate_met)) != 0 and len(set(O2_NAME) & set(rxn['products_mets'])) == 0:
+                        if rxn['bounds'] == [-1000,1000] or rxn['bounds'] == [-1000,0]:
+                            rxn["rules"]["aldehyde_ate_rxn"] = "true"                                  
+                if len(set(NAD_NADP_FDXO) & rxn['products_mets']):
+                    if len(set(rxn['products_mets']) & set(aldehyde_met)) != 0 and len(set(H2O_NAME) & set(rxn['products_mets'])) != 0 and len(set(rxn['reactants_mets']) & set(ate_met)) != 0 and len(set(O2_NAME) & set(rxn['reactants_mets'])) == 0:
+                        if rxn['bounds'] == [-1000,1000] or rxn['bounds'] == [0,1000]:
+                            rxn["rules"]["aldehyde_ate_rxn"] = "true"     
+
+    def find_aldehyde_ate_rxns(self, model_info):
+        """
+        Hydrolysis of aldehydes to acids and alcohols
+        """
+        anol_met = [] # alcohol metabolites
+        for met in model_info['metabolites']:
+            if met['name'].endswith('anol'):
+                anol_met.append(met['name'])
+        ate_met = self.find_ate_met(model_info)
+        aldehyde_met = self.find_aldehyde_met(model_info)
+      
+        for rxn in model_info['reactions']:
+            if rxn['id'] not in model_info['exchange_rxns']:
+                if len(set(H2O_NAME) & set(rxn['reactants_mets'])) != 0 and len(set(rxn['reactants_mets']) & set(aldehyde_met)) != 0 and len(set(rxn['products_mets']) & set(ate_met)) != 0 and len(set(rxn['products_mets']) & set(anol_met)) != 0:
+                    if rxn['bounds'] == [-1000,1000] or rxn['bounds'] == [-1000,0]:
+                        rxn["rules"]["aldehyde_ate_rxns"] = "true"   
+                        
+                if len(set(H2O_NAME) & set(rxn['products_mets'])) != 0 and len(set(rxn['products_mets']) & set(aldehyde_met)) != 0 and len(set(rxn['reactants_mets']) & set(ate_met)) != 0 and len(set(rxn['reactants_mets']) & set(anol_met)) != 0:
+                    if rxn['bounds'] == [-1000,1000] or rxn['bounds'] == [0,1000]:
+                        rxn["rules"]["aldehyde_ate_rxns"] = "true"    
+
+    def find_sugar_pi_rxn(model_info):
+        """
+        Phosphorylated sugar hydrolysis reaction, irreversible
+        """
+        for rxn in model_info['reactions']:
+            if rxn['id'] not in model_info['exchange_rxns']:
+                if len(set(H2O_NAME) & set(rxn['reactants_mets'])) != 0 and len(set(SUGAR_PHOSPHATE) & set(rxn['reactants_mets'])) != 0 and len(rxn['reactants_mets']) == 2:
+                    if rxn['bounds'] == [-1000,1000] or rxn['bounds'] == [-1000,0]:
+                        rxn["rules"]["sugar_pi_rxn"] = "true"  
+                    
+                if len(set(H2O_NAME) & set(rxn['products_mets'])) != 0 and len(set(SUGAR_PHOSPHATE) & set(rxn['products_mets'])) != 0 and len(rxn['products_mets']) == 2:
+                    if rxn['bounds'] == [-1000,1000] or rxn['bounds'] == [0,1000]:
+                        rxn["rules"]["sugar_pi_rxn"] = "true"                          
+
+    def find_quino_rxn(model_info):
+        quino_mets = []
+        for met in model_info['metabolites']:
+            if re.search(r'Ubiquinone|Ubiquinol|Menaquinone|Menaquinol|Plastoquinol|Plastoquinone|2-Demethylmenaquinol|2-Demethylmenaquinone|Flavin adenine dinucleotide',met['name']):
+                quino_mets.append(met['name'])
+        for rxn in model_info['reactions']:
+            if len(set(rxn['reactants_mets']) & set(quino_mets)) != 0 and len(set(NADH) & set(rxn['reactants_mets'])) != 0 and len(set(NAD) & set(rxn['products_mets'])) != 0:
+                if rxn['bounds'] == [-1000,1000] or rxn['bounds'] == [-1000,0]:
+                    rxn["rules"]["quino_rxn"] = "true"  
+            if len(set(rxn['products_mets']) & set(quino_mets)) != 0 and len(set(NADH) & set(rxn['products_mets'])) != 0 and len(set(NAD) & set(rxn['reactants_mets'])) != 0:
+                if rxn['bounds'] == [-1000,1000] or rxn['bounds'] == [0,1000]:
+                    rxn["rules"]["quino_rxn"] = "true"      
+

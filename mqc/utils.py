@@ -2,6 +2,7 @@
 
 from cobra import Model, Reaction, Metabolite
 import pandas as pd
+import math 
 from mqc.defaults import *
 
 def get_model_file():
@@ -204,4 +205,36 @@ def relative_molecular_mass(model, metid):
         if e == 'Ba': mass += 137*en 
     return mass
 
+def check_rxn_balance(model_info, model, rxnId): 
+    """
+    Check if the reaction is balanced
+    """ 
+    for rxn in model_info['reactions']:
+        if rxn['id'] == rxnId and rxnId not in model_info['exchange_rxns']:
+            # check is a dictionary, calculate the mass and charge balance of the reaction, for a balanced reaction, this should be empty
+            check = model.reactions.get_by_id(rxnId).check_mass_balance()
+            if len(check) != 0:
+                # Elemental balance, charge nan  {'charge': nan}
+                if 'charge' in check.keys() and len(check) == 1 and math.isnan(check['charge']):
+                    rxn["balance"] = "true"
+                # {'charge': 1.0, 'H': 1.0}，The number of charge and the number of hydrogen are the same and have the same sign, the reaction is considered to be correct, and no manual inspection is performed
+                elif  "'H': " in str(check) and "'charge': " in str(check) and len(check) == 2 and check['charge'] == check['H'] and check['charge'] * check['H'] >=0:
+                    rxn["balance"] = "true"
+                # h2o，and the same sign, this response is considered correct
+                elif "'H': " in str(check) and "'O': " in str(check) and len(check) == 2 and abs(check['O']) == 1 and  abs(check['H']) == 2 and check['O'] * check['H'] >=0:
+                    rxn["balance"] = "true"
+                else:
+                    rxn["balance"] = "false"
+            rxn["balance"] = "true"
 
+def check_C_balance(model_info, model, rxnId): 
+    """
+    Check if the reaction is carbon balanced
+    """ 
+    for rxn in model_info['reactions']:
+        if rxn['id'] == rxnId and rxnId not in model_info['exchange_rxns']:
+            check = model.reactions.get_by_id(rxnId).check_mass_balance()
+            if len(check) != 0 and 'C' in check.keys():
+                # The element contains C, that is, carbon is not conserved
+                rxn["c_balance"] = "false"
+            rxn["c_balance"] = "true"

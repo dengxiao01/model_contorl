@@ -39,7 +39,7 @@ O2_NAME = ['o2']
 
 SOX = ['sox']
 
-H2O = ['h2o']
+H2O_NAME = ['h2o']
 
 H2O2 = ['h2o2']
 
@@ -86,9 +86,32 @@ ATP_SYNTHASE = ['atp','adp','h','pi','h2o','h']
 # List of High Energy Compounds (Acyl-CoA)
 YLCOA = ['accoa','succoa']
 
+COA =['coa']
+
+AC = ['ac']
+
+NADH = ['nadh']
+
+NAD = ['nad']
+
+NADPH = ['nadph']
+
+H2O2_REDUCED = ['Reduced glutathione', 'Reduced thioredoxin', 'Ferrocytochrome c-553']
+
+FE2 = ['fe2']
+
+FE3 = ['fe3']
+
+FADH2 = ['fadh2']
+
+NAD_NADP_FDXO = ['nad', 'nadp', 'fdxo']
+
 XTP = ['atp', 'gtp', 'ctp', 'utp', 'itp']
 
 XPI = ['pi', 'ppi', 'pppi']
+
+FREE_METS = ['h', 'nh4', 'cl', 'zn2', 'fe3', 'h2o2', 'h2o', 'o2s', 'so3', 'h2', 'hg2', 'mg2', 'ppi', 'mn2', 'cu2', 'n2o', 'k', 'so2', 'cu', \
+    'no3', 'cobalt2', 'pppi', 'co2', 'pi', 'coa', 'q8', 'no2', 'so4', 'o2', 'ca2', 'iodine', 'cd2', 'h2s', 'ag', 'fe2', 'no', 'q8h2', 'nh3', 'HC01501']
 
 # polysaccharides and glycogen
 SUGAR = ['Maltohexaose','Maltopentaose', 'Isomaltose', 'Maltosyltrehalose', 'Laminaribiose', 'Maltotetraosyltrehalose', 'Amylose', 
@@ -97,6 +120,8 @@ SUGAR = ['Maltohexaose','Maltopentaose', 'Isomaltose', 'Maltosyltrehalose', 'Lam
                 'TrehaloseCellobiose', 'XylobioseXylotetraose', 'Chitobiose', 'Manninotriose','Glycogen','Cellobiose']
 
 EXCEPT_SUGAR = ['tdm3','tdm2','tre6p','tres','tdm1','tdm4','tre6mm','chit6p']
+
+SUGAR_PHOSPHATE = ['chtbs6p', 'g6p', 'f1p', 'lac6p', 'tag1p__D ', 'man6p', 'malttr6p', 'f6p','chit6p', 'tre6p', 'dgal6p', '6pgg', 'suc6p', 'man6pglyc', 'malt6p']
 
 
 H2O_EXCHANGE_RXN = ["EX_cpd00001_b", "EX_h2o_e", "EX_h2o(e)", "EX_WATER@BOUNDARY"]
