@@ -31,6 +31,8 @@ SO4 = ["so4_c", "so4[c]", "so4[e]", "so4", "cpd00048_c0", "C00059", "HMDB01448",
 
 HCO3 = ["hco3_c", "hco3[c]"]
 
+HCO3_NAME = ['hco3']
+
 O2S = ['o2s']
 
 O2_METS = ['h2o2','o2','h','h2o']

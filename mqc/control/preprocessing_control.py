@@ -3,22 +3,12 @@
 import cobra
 from cobra.flux_analysis import pfba
 import pandas as pd
-import math
-import re
-import os
-from cobra import Model, Reaction, Metabolite
-from cobra.util.solver import linear_reaction_coefficients
-import numpy as np
-import pandas as pd
-from concurrent.futures import ProcessPoolExecutor
-import xlrd3
-import re
-import openpyxl
-from multiprocessing.pool import Pool
-from multiprocessing import Process, Lock
-import time 
+import os, sys
+# from os.path import abspath, join, dirname
+# sys.path.insert(1, join(abspath(dirname(__file__)), '../../../model_contorl'))
+# sys.path.append('../../../model_contorl')
 from mqc.defaults import *
-from mqc.utils import add_rxn
+from ..utils import add_rxn
 
 class Preprocess():
     """

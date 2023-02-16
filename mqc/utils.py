@@ -3,7 +3,8 @@
 from cobra import Model, Reaction, Metabolite
 import pandas as pd
 import math 
-from mqc.defaults import *
+from cobra.flux_analysis import pfba
+from defaults import *
 
 def get_model_file():
     """
@@ -15,7 +16,7 @@ def get_model_file():
         model file
 
     """
-    file = "mqc/test_data/virtual/Acinetobacter_haemolyticus_NIPH_261.xml"
+    file = "mqc/test_data/bigg_data/iCN718.xml"
     return file
 
 
@@ -115,6 +116,8 @@ def set_initial_obj2(model, rxnId):
                 return rxns.id
             else:
                 return ''
+    else:
+        return rxnId
 
 def add_demand(modelInfo, model, metId):
     """
@@ -152,23 +155,23 @@ def set_model_objective(modelInfo, model, rxnId):
     """
     Set the incoming response ID as the target and update modelInfo.
     """
-    now_obj_rxn_info = []
+    # now_obj_rxn_info = []
     model.objective = rxnId
     now_obj_rxn_flux = model.optimize().objective_value
     now_obj_rxn_exp = model.reactions.get_by_id(rxnId).build_reaction_string()   
     NowObjRxnInfo = {"now_obj_rxn_id" : rxnId,
                     "now_obj_rxn_flux" : now_obj_rxn_flux,
                     "now_obj_rxn_exp" : now_obj_rxn_exp}
-    now_obj_rxn_info.append(NowObjRxnInfo)
-    modelInfo["now_obj_rxn"] = now_obj_rxn_info
+    # now_obj_rxn_info.append(NowObjRxnInfo)
+    modelInfo["now_obj_rxn"] = NowObjRxnInfo
 
 
 def is_bio_exp_correct(modelInfo):
     """
     Judging whether the biomass response of the model is correctly represented.
     """
-    id_index = modelInfo["initial_rxn"].index("initial_rxn_id")
-    if not modelInfo["initial_rxn"][id_index]:
+    # id_index = modelInfo["initial_rxn"].index("initial_rxn_id")
+    if not modelInfo["initial_rxn"]["initial_rxn_id"]:
         return 0
     return 1
 
@@ -205,14 +208,14 @@ def relative_molecular_mass(model, metid):
         if e == 'Ba': mass += 137*en 
     return mass
 
-def check_rxn_balance(model_info, model, rxnId): 
+def check_rxn_balance(model_info, model): 
     """
     Check if the reaction is balanced
     """ 
     for rxn in model_info['reactions']:
-        if rxn['id'] == rxnId and rxnId not in model_info['exchange_rxns']:
+        if rxn['id'] not in model_info['exchange_rxns']:
             # check is a dictionary, calculate the mass and charge balance of the reaction, for a balanced reaction, this should be empty
-            check = model.reactions.get_by_id(rxnId).check_mass_balance()
+            check = model.reactions.get_by_id(rxn['id']).check_mass_balance()
             if len(check) != 0:
                 # Elemental balance, charge nan  {'charge': nan}
                 if 'charge' in check.keys() and len(check) == 1 and math.isnan(check['charge']):
@@ -225,16 +228,40 @@ def check_rxn_balance(model_info, model, rxnId):
                     rxn["balance"] = "true"
                 else:
                     rxn["balance"] = "false"
-            rxn["balance"] = "true"
+            else:
+                rxn["balance"] = "true"
+        else:
+            rxn["balance"] = ""
 
-def check_C_balance(model_info, model, rxnId): 
+def check_C_balance(model_info, model): 
     """
     Check if the reaction is carbon balanced
     """ 
     for rxn in model_info['reactions']:
-        if rxn['id'] == rxnId and rxnId not in model_info['exchange_rxns']:
-            check = model.reactions.get_by_id(rxnId).check_mass_balance()
+        if rxn['id'] not in model_info['exchange_rxns']:
+            check = model.reactions.get_by_id(rxn['id']).check_mass_balance()
             if len(check) != 0 and 'C' in check.keys():
                 # The element contains C, that is, carbon is not conserved
                 rxn["c_balance"] = "false"
-            rxn["c_balance"] = "true"
+            else:
+                rxn["c_balance"] = "true"
+        else:
+            rxn["c_balance"] = ""
+
+
+def write_flux_file(model_info, model):
+    """
+    get flux file
+    """
+    pfba_solution = pfba(model)  # Reaction with limited flux value v greater than 1e-6
+    need_fluxes = pfba_solution.fluxes[abs(pfba_solution.fluxes)>1e-6]  # abs(pfba_solution.fluxes)>1e-6 gets the true or false result of each reaction, and finally returns true
+    with open('mqc/flux.txt', 'w') as flux:  
+        for r,v in need_fluxes.items():
+            for rxn in model_info['reactions']:
+                if r == rxn['id']:
+                    rxns = model.reactions.get_by_id(r)
+                    try:
+                        check = rxns.check_mass_balance()           
+                        flux.write(f"{r}\t{round(v,5)}\t{rxn['rxn_exp_id']}\t{check}\t{rxn['net_penalty_points']}\t{rxn['bounds']}\n")   
+                    except ValueError:
+                        flux.write(f"{r}\t{round(v,5)}\t{rxn['rxn_exp_id']}\t{rxn['net_penalty_points']}\t{rxn['bounds']}\tno_check_mass_balance\n")  

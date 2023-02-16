@@ -2,7 +2,7 @@
 
 from cobra.util.solver import linear_reaction_coefficients
 import json 
-from mqc.control.preprocessing import Preprocess
+from mqc.control.preprocessing_control import Preprocess
 from mqc.utils import *
 
 
@@ -192,7 +192,7 @@ class ModelPreprocess():
 
     def get_initial_obj_info(self, obj):
 
-        initial_rxn_info = []
+        # initial_rxn_info = []
         try:
             initial_rxn_id = list(linear_reaction_coefficients(obj.model).keys())[0].id
         except:
@@ -207,8 +207,8 @@ class ModelPreprocess():
         InitialRxnInfo = {"initial_rxn_id" : initial_rxn_id,
                             "initial_rxn_flux" : initial_rxn_flux,
                             "initial_rxn_exp" : initial_rxn_exp}
-        initial_rxn_info.append(InitialRxnInfo)
-        return initial_rxn_info
+        # initial_rxn_info.append(InitialRxnInfo)
+        return InitialRxnInfo
 
     def get_model_info(self, controler):
         """
@@ -229,7 +229,7 @@ class ModelPreprocess():
                             "metabolites" : self.get_met_info(controler),
                             "reactions" : self.get_rxn_info(controler),
                             "initial_rxn" : self.get_initial_obj_info(controler)}
-        self.model_info["all_rxn_obj"] = controler.model.reactions 
+        self.model_info["all_rxn_obj"] = [rxn.id for rxn in controler.model.reactions]
         self.model_info["exchange_rxns"] = self.get_exchange_rxns()
         self.model_info["transport_rxns"] = self.get_transport_rxns()
         with open("mqc/test.json", "w") as f:

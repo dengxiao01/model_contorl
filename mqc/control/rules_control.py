@@ -4,11 +4,13 @@ import re
 from mqc.defaults import *
 
 class Rules():
-
+    """
+    Get all rule information
+    """
     def __init__(self):
+        """xxx"""
 
-
-    def find_o2s(model_info):
+    def find_o2s(self, model_info):
         """
         o2s rules
         """
@@ -17,7 +19,7 @@ class Rules():
                 if rxn["all_mets"][0] in O2S:
                     rxn["rules"]["o2s_rxn"] = "true"
 
-    def find_O2_inorganic_rxn(model_info):
+    def find_O2_inorganic_rxn(self, model_info):
         """
         find inorganic reactions involving oxygen
         """
@@ -35,7 +37,7 @@ class Rules():
         return O2_inorganic_rxn
 
 
-    def find_superoxide_rxn(model_info):
+    def find_superoxide_rxn(self, model_info):
         """
         superoxide, reaction of peroxide to produce oxygen
 
@@ -63,7 +65,7 @@ class Rules():
         return superoxide_rxn
 
 
-    def find_photosynthetic_rxn(model_info):
+    def find_photosynthetic_rxn(self, model_info):
         """
         What are the photosynthetic bacteria, the reaction of photosynthesis to produce oxygen
         """
@@ -93,7 +95,7 @@ class Rules():
                         O2_rxn.append(rxn['id'])
         return O2_rxn
         
-    def find_nh4_inorganic_rxn(model_info):
+    def find_nh4_inorganic_rxn(self, model_info):
         """
         find the inorganic reaction of nh3 and nh4
         """
@@ -106,12 +108,11 @@ class Rules():
                     nh4_inorganic_rxn.append(rxn['id'])
         return nh4_inorganic_rxn
 
-    def find_nh3_nh4_rxn(self, model_info):
+    def find_nh3_nh4_rxn(self, model_info, O2_rxn):
         """
         Except nh3, nh4 and ATP, nadh, nadph, chor, prpp, udpacblfuc reactions can fix ammonia, others are reactions to generate ammonia
         """
         nh4_inorganic_rxn = self.find_nh4_inorganic_rxn(model_info)
-        O2_rxn = self.find_O2_rxn(model_info)
         for rxn in model_info['reactions']:
             if rxn['id'] not in model_info['exchange_rxns'] and rxn['id'] not in model_info['transport_rxns'] and rxn['id'] not in nh4_inorganic_rxn and rxn['id'] not in O2_rxn:
                 if len(set(NH4_NAME) & set(rxn['reactants_mets'])) != 0 or len(set(NH3_NAME) & set(rxn['reactants_mets'])) != 0:
@@ -124,7 +125,7 @@ class Rules():
                             rxn["rules"]["nh3_nh4_rxn"] = "true"
 
 
-    def find_CO2_rxn_all(model_info):
+    def find_CO2_rxn_all(self, model_info):
         """
         Find all CO2 reactions
         """
@@ -228,7 +229,7 @@ class Rules():
                         rxn["rules"]["co2_rxn"] = "true"
 
 
-    def find_ATP_synthase_rxn(model_info):
+    def find_ATP_synthase_rxn(self, model_info):
         """
         Find out the list of ATP synthase reactions
         """
@@ -255,37 +256,36 @@ class Rules():
                             rxn["rules"]["atp_rxn"] = "true"
 
 
-    def find_proton_rxn(self, model_info):
+    def find_proton_rxn(self, model_info, model):
         """
         find the proton transport reaction
         """
-        proton_rxn, atp_synthetic = [], []
         hm = []
         for rxn in model_info['reactions']:
-
-            h_met = [met.id for met in rxn['all_mets'] if met == 'h']
-            if sorted(ATP_SYNTHASE) == sorted(rxn_met):
-                if 'atp' in r_mets :
-                    if r.bounds == (0,1000) : proton_rxn.append(r.id)
+            rxns = model.reactions.get_by_id(rxn['id'])
+            h_met = [met.id for met in rxns.metabolites if met.id in H]
+            if sorted(ATP_SYNTHASE) == sorted(rxn['all_mets']):
+                if len(set(ATP_NAME) & set(rxn['reactants_mets'])) != 0:
+                    if rxn['bounds'] == [0,1000] : rxn["rules"]["proton_rxn"] = "true"
                     h_met.reverse()
                     hm = h_met
-                if 'atp' in pro_mets :
-                    if r.bounds == (-1000,0) : proton_rxn.append(r.id)
+                if len(set(ATP_NAME) & set(rxn['products_mets'])) != 0 :
+                    if rxn['bounds'] == [-1000,0] : rxn["rules"]["proton_rxn"] = "true"
                     hm = h_met
             
-                for rxn in model.reactions:
-                    rxn_met_c = [met.id for met in rxn.metabolites]
-                    r_mets_id = [str(m) for m in rxn.reactants]
-                    pro_mets_id = [str(m) for m in rxn.products]
-                    if len(set(hm)&set(rxn_met_c)) == 2 and rxn.id in transport_rxns:
-                        if hm[0] in r_mets_id and hm[1] in pro_mets_id and rxn.bounds == (-1000,0):
-                            proton_rxn.append(rxn.id)
-                        elif hm[0] in pro_mets_id and hm[1] in r_mets_id and rxn.bounds == (0,1000):            
-                            proton_rxn.append(rxn.id)
+                for now_rxn in model.reactions:
+                    rxn_met_c = [met.id for met in now_rxn.metabolites]
+                    r_mets_id = [met.id for met in now_rxn.reactants]
+                    pro_mets_id = [met.id for met in now_rxn.products]
+                    if len(set(hm)&set(rxn_met_c)) == 2 and now_rxn.id in model_info['transport_rxns']:
+                        if hm[0] in r_mets_id and hm[1] in pro_mets_id and now_rxn.bounds == (-1000,0):
+                            rxn["rules"]["proton_rxn"] = "true"
+                        elif hm[0] in pro_mets_id and hm[1] in r_mets_id and now_rxn.bounds == (0,1000):            
+                            rxn["rules"]["proton_rxn"] = "true"
                 hm = []
-        return proton_rxn, atp_synthetic                        
+                      
 
-    def find_Sugar_hydrolysis_rxn(model_info):
+    def find_Sugar_hydrolysis_rxn(self, model_info):
         """
         Find reactions that don't follow the rules for polysaccharides and glycogen
         """
@@ -307,7 +307,7 @@ class Rules():
                     if rxn['bounds'] == [-1000,1000] or rxn['bounds'] == [0,1000]:
                         rxn["rules"]["sugar_hydrolysis_rxn"] = "true"
 
-    def find_PTS_transport(model_info):
+    def find_PTS_transport(self, model_info):
         """
         Find reactions that do not correspond to the PTS pathway for material transport. PTS pathway for material transport, irreversible
         """
@@ -315,7 +315,7 @@ class Rules():
             if 'PTS' in rxn['name'] and rxn['bounds'] == [-1000,1000]:
                 rxn["rules"]["PTS_transport"] = "true"
                 
-    def find_ppi_h2o(model_info):
+    def find_ppi_h2o(self, model_info):
         """
         Hydrolysis of polyphosphoric acid to generate pi ppi
         """
@@ -332,7 +332,7 @@ class Rules():
                             if len(set(PI_NAME) & set(rxn['reactants_mets'])) != 0 or len(set(PPI_NAME) & set(rxn['reactants_mets'])) != 0:
                                 rxn["rules"]["ppi_h2o"] = "true"          
 
-    def find_acyl_h2o(model_info):
+    def find_acyl_h2o(self, model_info):
         """
         Acyl-CoA is hydrolyzed to produce CoA
         """
@@ -345,7 +345,7 @@ class Rules():
                     if rxn['bounds'] == [-1000,1000] or rxn['bounds'] == ['0,1000']:
                         rxn["rules"]["acyl_h2o"] = "true"                                  
 
-    def find_ac_acid(model_info):
+    def find_ac_acid(self, model_info):
         """
         In addition to the reaction of acetic acid and high-energy substances (atp, acyl-CoA) substances, the reaction containing acetic acid is the direction of generating acetic acid
         """
@@ -360,7 +360,7 @@ class Rules():
                         if rxn['bounds'] == [-1000,1000] or rxn['bounds'] == [0,1000]:
                             rxn["rules"]["ac_acid"] = "true"  
 
-    def find_h2o2_rxn(model_info, model):
+    def find_h2o2_rxn(self, model_info, model):
         """
         When hydrogen peroxide reacts with reducing substances (nadh, ndph, Reduced glutathione, Reduced thioredoxin, Ferrocytochrome c-553), it is irreversible
         """
@@ -378,7 +378,7 @@ class Rules():
                         if rxn['bounds'] == [-1000,1000] or rxn['bounds'] == [0,1000]:    
                             rxn["rules"]["h2o2_rxn"] = "true"   
 
-    def find_fe3_fe2_rxn(model_info):
+    def find_fe3_fe2_rxn(self, model_info):
         """
         Fe3 reacts with nadh and fadh2 to Fe2, which is irreversible
         """
@@ -394,7 +394,7 @@ class Rules():
                         if rxn['bounds'] == [-1000,1000] or rxn['bounds'] == [0,1000]:
                             rxn["rules"]["fe3_fe2_rxn"] = "true"     
 
-    def find_ate_met(model_info):
+    def find_ate_met(self, model_info):
         """
         Acquire acid metabolites
         """
@@ -404,7 +404,7 @@ class Rules():
                 ate_met.append(met['name'])
         return ate_met    
 
-    def find_aldehyde_met(model_info):
+    def find_aldehyde_met(self, model_info):
         """
         Access to aldehyde metabolites
         """
@@ -422,11 +422,11 @@ class Rules():
         aldehyde_met = self.find_aldehyde_met(model_info)      
         for rxn in model_info['reactions']:
             if rxn['id'] not in model_info['exchange_rxns']:
-                if len(set(NAD_NADP_FDXO) & rxn['reactants_mets']):
+                if len(set(NAD_NADP_FDXO) & set(rxn['reactants_mets'])) != 0:
                     if len(set(rxn['reactants_mets']) & set(aldehyde_met)) != 0 and len(set(H2O_NAME) & set(rxn['reactants_mets'])) != 0 and len(set(rxn['products_mets']) & set(ate_met)) != 0 and len(set(O2_NAME) & set(rxn['products_mets'])) == 0:
                         if rxn['bounds'] == [-1000,1000] or rxn['bounds'] == [-1000,0]:
                             rxn["rules"]["aldehyde_ate_rxn"] = "true"                                  
-                if len(set(NAD_NADP_FDXO) & rxn['products_mets']):
+                if len(set(NAD_NADP_FDXO) & set(rxn['products_mets'])) != 0:
                     if len(set(rxn['products_mets']) & set(aldehyde_met)) != 0 and len(set(H2O_NAME) & set(rxn['products_mets'])) != 0 and len(set(rxn['reactants_mets']) & set(ate_met)) != 0 and len(set(O2_NAME) & set(rxn['reactants_mets'])) == 0:
                         if rxn['bounds'] == [-1000,1000] or rxn['bounds'] == [0,1000]:
                             rxn["rules"]["aldehyde_ate_rxn"] = "true"     
@@ -452,7 +452,7 @@ class Rules():
                     if rxn['bounds'] == [-1000,1000] or rxn['bounds'] == [0,1000]:
                         rxn["rules"]["aldehyde_ate_rxns"] = "true"    
 
-    def find_sugar_pi_rxn(model_info):
+    def find_sugar_pi_rxn(self, model_info):
         """
         Phosphorylated sugar hydrolysis reaction, irreversible
         """
@@ -466,7 +466,7 @@ class Rules():
                     if rxn['bounds'] == [-1000,1000] or rxn['bounds'] == [0,1000]:
                         rxn["rules"]["sugar_pi_rxn"] = "true"                          
 
-    def find_quino_rxn(model_info):
+    def find_quino_rxn(self, model_info):
         quino_mets = []
         for met in model_info['metabolites']:
             if re.search(r'Ubiquinone|Ubiquinol|Menaquinone|Menaquinol|Plastoquinol|Plastoquinone|2-Demethylmenaquinol|2-Demethylmenaquinone|Flavin adenine dinucleotide',met['name']):
@@ -479,3 +479,21 @@ class Rules():
                 if rxn['bounds'] == [-1000,1000] or rxn['bounds'] == [0,1000]:
                     rxn["rules"]["quino_rxn"] = "true"      
 
+    def get_all_rules(self, model_info, model):
+        self.find_o2s(model_info)
+        O2_rxn = self.find_O2_rxn(model_info)
+        self.find_nh3_nh4_rxn(model_info, O2_rxn)
+        self.find_CO2_rxn(model_info)
+        self.find_ATP_rxn(model_info)
+        self.find_proton_rxn(model_info, model)
+        self.find_Sugar_hydrolysis_rxn(model_info)
+        self.find_PTS_transport(model_info)
+        self.find_ppi_h2o(model_info)
+        self.find_acyl_h2o(model_info)
+        self.find_ac_acid(model_info)
+        self.find_h2o2_rxn(model_info, model)
+        self.find_fe3_fe2_rxn(model_info)
+        self.find_aldehyde_ate_rxn(model_info)
+        self.find_aldehyde_ate_rxns(model_info)
+        self.find_sugar_pi_rxn(model_info)
+        self.find_quino_rxn(model_info)

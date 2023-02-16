@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from mqc.control.model import ModelPreprocess
-from mqc.control.preprocessing import Preprocess
+from mqc.control.model_control import ModelPreprocess
+from mqc.control.preprocessing_control import Preprocess
 from mqc.utils import *
 
 class Biomass():
