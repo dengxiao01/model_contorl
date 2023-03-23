@@ -36,19 +36,23 @@ class ModelPreprocess():
 
         """
         for met in obj.model.metabolites:
-            if len(met.id.split("_")[-1]) == 1:  # bigg
-                obj.add_bigg_formula()
-                break
-            if len(met.id.split("_")[-1]) == 2:  # seed
+            if met.id.startswith("cpd"):  # seed
                 obj.add_seed_formula()
                 self.modelseed_id_to_name = obj.bind_id_name()
                 break 
-            if "@" in met.id:  # meta
+            elif len(met.id.split("_")[-1]) == 1:  # bigg
+                obj.add_bigg_formula()
+                break
+            elif "@" in met.id:  # meta
                 obj.add_meta_formula()
                 break
-            if "[" in met.id and "]" in met.id:  # virtual
-                obj.add_meta_formula()
+            elif "[" in met.id and "]" in met.id:  # virtual
+                break
+            elif met.id.startswith("C"):  # kegg
+                obj.add_kegg_formula()
                 break 
+            else:
+                """其他库--kegg,metacyc...bigg不好区分也可放进来,做成一个大表,这个表只包含formula就行"""
 
 
     def preprocess_rxn(self, obj):  
@@ -79,6 +83,26 @@ class ModelPreprocess():
             obj.add_exchange_rxn("so4_exchange")
 
 
+    def get_identifier(self, obj):
+        """"""
+        identifier = ""
+        for met in obj.model.metabolites:
+            if met.id.startswith("cpd"):  # seed
+                identifier = "modelseed"
+                break 
+            elif len(met.id.split("_")[-1]) == 1:  # bigg
+                identifier = "bigg"
+                break 
+            elif "@" in met.id:  # metaNetx
+                identifier = "metaNetx"
+                break 
+            elif "[" in met.id and "]" in met.id:  # virtual
+                identifier = "virtual"
+                break
+            else:
+                identifier = "other"
+                break 
+        return identifier
 
 
     def get_met_info(self, obj):
@@ -93,17 +117,17 @@ class ModelPreprocess():
         """
         met_info = []
         for met in obj.model.metabolites:
-            if len(met.id.split("_")[-1]) == 1:  # bigg
-                metInfo = {"id" : met.id,
-                            "name" : '_'.join(met.id.split('_')[:-1]),
-                            "charge" : met.charge,
-                            "formula" : met.formula}
-            elif len(met.id.split("_")[-1]) == 2:  # seed
+            if met.id.startswith("cpd"):  # seed
                 metInfo = {"id" : met.id,
                             "name" : self.modelseed_id_to_name[met.id.split('_')[0]],
                             "charge" : met.charge,
                             "formula" : met.formula}
-            elif "@" in met.id:  # meta
+            elif len(met.id.split("_")[-1]) == 1:  # bigg
+                metInfo = {"id" : met.id,
+                            "name" : '_'.join(met.id.split('_')[:-1]),
+                            "charge" : met.charge,
+                            "formula" : met.formula} 
+            elif "@" in met.id:  # metaNetx
                 metInfo = {"id" : met.id,
                             "name" : met.name,
                             "charge" : met.charge,
@@ -123,10 +147,10 @@ class ModelPreprocess():
 
     def get_met_name(self, obj, metId):
         met = obj.model.metabolites.get_by_id(metId)
-        if len(met.id.split("_")[-1]) == 1 : return '_'.join(met.id.split('_')[:-1])  # bigg
-        elif len(met.id.split("_")[-1]) == 2 : return self.modelseed_id_to_name[met.id.split('_')[0]]  # seed
-        elif "@" in met.id : return met.name  # meta
-        elif "[" in met.id and "]" in met.id : return met.id.split('[')[0]  # virtual
+        if metId.startswith("cpd") : return self.modelseed_id_to_name[metId.split('_')[0]]  # seed
+        elif len(metId.split("_")[-1]) == 1 : return '_'.join(metId.split('_')[:-1])  # bigg 
+        elif "@" in metId : return met.name  # metaNetx
+        elif "[" in metId and "]" in met.id : return metId.split('[')[0]  # virtual
         else : return met.name  # IDs that do not belong to the four libraries
 
     def get_rxn_info(self, obj):
@@ -199,9 +223,12 @@ class ModelPreprocess():
             initial_rxn_id = set_initial_obj(obj.model)
         else:
              initial_rxn_id = set_initial_obj2(obj.model, initial_rxn_id)
-        initial_rxn_flux = obj.model.optimize().objective_value
+        initial_rxn_flux = obj.model.slim_optimize()
         try:
-            initial_rxn_exp = obj.model.reactions.get_by_id(initial_rxn_id).build_reaction_string()
+            if self.model_info['model_identifier'] == 'modelseed' or self.model_info['model_identifier'] == 'metaNetx':
+                initial_rxn_exp = obj.model.reactions.get_by_id(initial_rxn_id).build_reaction_string(use_metabolite_names=True)
+            else:
+                initial_rxn_exp = obj.model.reactions.get_by_id(initial_rxn_id).build_reaction_string()
         except KeyError:
             initial_rxn_exp = ''
         InitialRxnInfo = {"initial_rxn_id" : initial_rxn_id,
@@ -209,6 +236,18 @@ class ModelPreprocess():
                             "initial_rxn_exp" : initial_rxn_exp}
         # initial_rxn_info.append(InitialRxnInfo)
         return InitialRxnInfo
+
+    def find_glucose(self):
+        """"""
+        glucose_rxnId = ''
+        if len(set(GLUCOSE_RXN) & set(self.model_info['all_rxn_id'])) != 0:
+            glucose_rxnId = list(set(GLUCOSE_RXN) & set(self.model_info['all_rxn_id']))[0]
+        else:
+            for rxn in self.model_info["reactions"]:
+                if rxn['id'] in self.model_info['exchange_rxns'] and 'glucose' in rxn['all_mets'][0].lower():
+                    glucose_rxnId = rxn['id']
+        return glucose_rxnId
+
 
     def get_model_info(self, controler):
         """
@@ -220,20 +259,22 @@ class ModelPreprocess():
             model file
 
         """
-        # file_path = get_model_file()
-        # controler = Preprocess(file_path)
-        # self.check_model = controler.check_model
         self.preprocess_met(controler)
         self.preprocess_rxn(controler)
+  
         self.model_info = {"model_id" : controler.model.id,
+                           "model_identifier" : self.get_identifier(controler),
                             "metabolites" : self.get_met_info(controler),
-                            "reactions" : self.get_rxn_info(controler),
-                            "initial_rxn" : self.get_initial_obj_info(controler)}
-        self.model_info["all_rxn_obj"] = [rxn.id for rxn in controler.model.reactions]
+                            "reactions" : self.get_rxn_info(controler),}
+        self.model_info["initial_rxn"] = self.get_initial_obj_info(controler)
+        self.model_info["all_rxn_id"] = [rxn.id for rxn in controler.model.reactions]
         self.model_info["exchange_rxns"] = self.get_exchange_rxns()
         self.model_info["transport_rxns"] = self.get_transport_rxns()
-        with open("mqc/test.json", "w") as f:
-            json.dump(self.model_info, f, ensure_ascii=False)
+        self.model_info["glucose_rxnId"] = self.find_glucose()
+   
+        modelInfo = json.dumps(self.model_info, ensure_ascii=False, allow_nan = True, indent=1)
+        with open("mqc/test.json", "w", newline='',) as f:
+            f.write(modelInfo)
 
 
 

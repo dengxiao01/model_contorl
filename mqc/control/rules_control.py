@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import re 
+import pandas as pd 
+import fnmatch
 from mqc.defaults import *
 
 class Rules():
@@ -8,7 +10,7 @@ class Rules():
     Get all rule information
     """
     def __init__(self):
-        """xxx"""
+        """"""
 
     def find_o2s(self, model_info):
         """
@@ -26,8 +28,7 @@ class Rules():
         O2_inorganic_rxn = []   
         for rxn in model_info["reactions"]:
             if rxn["id"] not in model_info["transport_rxns"] and rxn["id"] not in model_info["exchange_rxns"]:
-                n = 0
-                s = 0
+                n, s = 0, 0
                 for met in rxn["all_mets"]:
                     s += 1
                     if met in O2_METS:
@@ -51,15 +52,15 @@ class Rules():
         superoxide_rxn = []
         for rxn in model_info["reactions"]:
             if len(set(O2S) & set(rxn['reactants_mets'])) != 0 or len(set(SOX) & set(rxn['reactants_mets'])) != 0:
-                if len(set(H2O2) & set(rxn['products_mets'])) != 0 and len(set(O2_NAME) & set(rxn['products_mets'])) != 0:
+                if len(set(H2O2_NAME) & set(rxn['products_mets'])) != 0 and len(set(O2_NAME) & set(rxn['products_mets'])) != 0:
                     superoxide_rxn.append(rxn['id'])
             if len(set(O2S) & set(rxn['products_mets'])) != 0 or len(set(SOX) & set(rxn['products_mets'])) != 0:
-                if len(set(H2O2) & set(rxn['reactants_mets'])) != 0 and len(set(O2_NAME) & set(rxn['reactants_mets'])) != 0:
+                if len(set(H2O2_NAME) & set(rxn['reactants_mets'])) != 0 and len(set(O2_NAME) & set(rxn['reactants_mets'])) != 0:
                     superoxide_rxn.append(rxn['id'])
-            if len(set(GTHRD) & set(rxn['reactants_mets'])) != 0 or len(set(H2O2) & set(rxn['reactants_mets'])) != 0:
+            if len(set(GTHRD) & set(rxn['reactants_mets'])) != 0 or len(set(H2O2_NAME) & set(rxn['reactants_mets'])) != 0:
                 if len(set(GTHOX) & set(rxn['products_mets'])) != 0 and len(set(O2_NAME) & set(rxn['products_mets'])) != 0:
                     superoxide_rxn.append(rxn['id'])       
-            if len(set(GTHRD) & set(rxn['products_mets'])) != 0 or len(set(H2O2) & set(rxn['products_mets'])) != 0:
+            if len(set(GTHRD) & set(rxn['products_mets'])) != 0 or len(set(H2O2_NAME) & set(rxn['products_mets'])) != 0:
                 if len(set(GTHOX) & set(rxn['reactants_mets'])) != 0 and len(set(O2_NAME) & set(rxn['reactants_mets'])) != 0:
                     superoxide_rxn.append(rxn['id'])
         return superoxide_rxn
@@ -71,7 +72,11 @@ class Rules():
         """
         photosynthetic_rxn = []
         for rxn in model_info['reactions']:
-            if re.search(r'Photosystem',rxn['name']):
+            if re.search(r'Photosystem',rxn['name']): # bigg
+                photosynthetic_rxn.append(rxn['id'])
+            if len(set(PHOTON_NAME) & set(rxn['reactants_mets'])) != 0 and len(set(O2_NAME) & set(rxn['products_mets'])) != 0: # seed
+                photosynthetic_rxn.append(rxn['id'])
+            if len(set(PHOTON_NAME) & set(rxn['products_mets'])) != 0 and len(set(O2_NAME) & set(rxn['reactants_mets'])) != 0:
                 photosynthetic_rxn.append(rxn['id'])
         return photosynthetic_rxn
 
@@ -120,7 +125,7 @@ class Rules():
                         if rxn['bounds'] == [-1000,1000] or rxn['bounds'] == [0,1000]:                            
                             rxn["rules"]["nh3_nh4_rxn"] = "true"                 
                 if len(set(NH4_NAME) & set(rxn['products_mets'])) != 0 or len(set(NH3_NAME) & set(rxn['products_mets'])) != 0:
-                    if  len(set(SOLID_AMMONIA) & set(rxn['products_mets'])) == 0:
+                    if len(set(SOLID_AMMONIA) & set(rxn['products_mets'])) == 0:
                         if rxn['bounds'] == [-1000,1000] or rxn['bounds'] == [-1000,0]:
                             rxn["rules"]["nh3_nh4_rxn"] = "true"
 
@@ -135,9 +140,9 @@ class Rules():
                 if rxn['bounds'] == [-1000,1000] and len(set(CO2_NAME) & set(rxn['all_mets'])) != 0:
                     CO2_rxn_all.append(rxn['id'])
                 if rxn['bounds'] == [0,1000] and len(set(CO2_NAME) & set(rxn['reactants_mets'])) != 0:
-                    CO2_rxn_all.append(rxn.id)
+                    CO2_rxn_all.append(rxn['id'])
                 if rxn['bounds'] == [-1000,0] and len(set(CO2_NAME) & set(rxn['products_mets'])) != 0:
-                    CO2_rxn_all.append(rxn.id)
+                    CO2_rxn_all.append(rxn['id'])
         return CO2_rxn_all     
 
     def find_co2_inorganic_rxn(self, model_info):
@@ -194,6 +199,7 @@ class Rules():
                     natural_co2_rxn.append(rxn['id']) 
                 # CODH_ACS: co2_c + coa_c + fdxr_42_c + h_c + mecfsp_c --> accoa_c + cfesp_c + fdxo_42_c + h2o_c
                 natural_co2_rxn.append('CODH_ACS')
+                natural_co2_rxn.append('MNXR96830')
                 
                 # reverse TCA cycle
                 # OOR2r: akg_c + coa_c + fdxo_42_c <=> co2_c + fdxr_42_c + h_c + succoa_c
@@ -252,7 +258,7 @@ class Rules():
                             rxn["rules"]["atp_rxn"] = "true"
                 if len(set(XTP) & set(rxn['products_mets'])) != 0:
                     if len(set(XPI) & set(rxn['reactants_mets'])) != 0:
-                        if len(set(rxn['reactants_mets']) & set(YLCOA)) == 0 and rxn['bounds'][0] == -1000:   
+                        if len(set(rxn['reactants_mets']) & set(YLCOA)) == 0 and rxn['bounds'][1] == 1000:   
                             rxn["rules"]["atp_rxn"] = "true"
 
 
@@ -260,30 +266,41 @@ class Rules():
         """
         find the proton transport reaction
         """
-        hm = []
+        hm, h_close = [], []
         for rxn in model_info['reactions']:
             rxns = model.reactions.get_by_id(rxn['id'])
-            h_met = [met.id for met in rxns.metabolites if met.id in H]
-            if sorted(ATP_SYNTHASE) == sorted(rxn['all_mets']):
+            h_met = [met.id for met in rxns.metabolites if met.name in H_NAME]
+            if len(rxn['all_mets']) == 6 and set(rxn['all_mets']).issubset(ATP_SYNTHASE) and len(h_met) == 2:
                 if len(set(ATP_NAME) & set(rxn['reactants_mets'])) != 0:
-                    if rxn['bounds'] == [0,1000] : rxn["rules"]["proton_rxn"] = "true"
+                    if rxn['bounds'] == [0,1000]: 
+                        rxn["rules"]["proton_rxn"] = "true"
+                    else:
+                        rxn["rules"]["right_chain_rxn"] = "true" 
                     h_met.reverse()
                     hm = h_met
+
                 if len(set(ATP_NAME) & set(rxn['products_mets'])) != 0 :
-                    if rxn['bounds'] == [-1000,0] : rxn["rules"]["proton_rxn"] = "true"
+                    if rxn['bounds'] == [-1000,0]: 
+                        rxn["rules"]["proton_rxn"] = "true"
+                    else:
+                        rxn["rules"]["right_chain_rxn"] = "true" 
                     hm = h_met
-            
+                h_close.append(hm[0])
+                
                 for now_rxn in model.reactions:
                     rxn_met_c = [met.id for met in now_rxn.metabolites]
                     r_mets_id = [met.id for met in now_rxn.reactants]
                     pro_mets_id = [met.id for met in now_rxn.products]
-                    if len(set(hm)&set(rxn_met_c)) == 2 and now_rxn.id in model_info['transport_rxns']:
-                        if hm[0] in r_mets_id and hm[1] in pro_mets_id and now_rxn.bounds == (-1000,0):
-                            rxn["rules"]["proton_rxn"] = "true"
-                        elif hm[0] in pro_mets_id and hm[1] in r_mets_id and now_rxn.bounds == (0,1000):            
-                            rxn["rules"]["proton_rxn"] = "true"
+                    if len(set(hm)&set(rxn_met_c)) == 2:
+                        # h_close.append(hm[0])
+                        # print('h_close:',h_close)
+                        if now_rxn.id in model_info['transport_rxns']:
+                            if hm[0] in r_mets_id and hm[1] in pro_mets_id and now_rxn.bounds == (-1000,0):
+                                rxn["rules"]["proton_rxn"] = "true"
+                            elif hm[0] in pro_mets_id and hm[1] in r_mets_id and now_rxn.bounds == (0,1000):            
+                                rxn["rules"]["proton_rxn"] = "true"
                 hm = []
-                      
+        model_info["h_close"] = list(set(h_close))
 
     def find_Sugar_hydrolysis_rxn(self, model_info):
         """
@@ -323,13 +340,13 @@ class Rules():
             if rxn['id'] not in model_info['exchange_rxns']:
                 if len(set(H2O_NAME) & set(rxn['reactants_mets'])) != 0:
                     for r_m in rxn['reactants_mets']:
-                        if re.search(r'triphosphate|diphosphate',r_m) and rxn['bounds'][0] == -1000: 
-                            if len(set(PI_NAME) & set(rxn['products_mets'])) != 0 or len(set(PPI_NAME) & set(rxn['products_mets'])) != 0:
+                        if re.search(r'Phosphate|PPi|triphosphate|diphosphate|bisphosphate',r_m) and rxn['bounds'][0] == -1000: 
+                            if len(set(ALL_PI_NAME) & set(rxn['products_mets'])) != 0:
                                 rxn["rules"]["ppi_h2o"] = "true"       
                 if len(set(H2O_NAME) & set(rxn['products_mets'])) != 0:            
                     for p_m in rxn['products_mets']:
-                        if re.search(r'triphosphate|diphosphate',p_m) and rxn['bounds'][1] == 1000: 
-                            if len(set(PI_NAME) & set(rxn['reactants_mets'])) != 0 or len(set(PPI_NAME) & set(rxn['reactants_mets'])) != 0:
+                        if re.search(r'Phosphate|PPi|triphosphate|diphosphate|bisphosphate',p_m) and rxn['bounds'][1] == 1000: 
+                            if len(set(ALL_PI_NAME) & set(rxn['reactants_mets'])) != 0:
                                 rxn["rules"]["ppi_h2o"] = "true"          
 
     def find_acyl_h2o(self, model_info):
@@ -366,14 +383,14 @@ class Rules():
         """
         for rxn in model_info['reactions']:
             if rxn['id'] not in model_info['exchange_rxns']:
-                rxnId = model.reactions.get_by_id(rxn['id'])
-                reactants_mets_name = [met.name for met in rxnId.reactants]
-                products_mets_name = [met.name for met in rxnId.products]      
-                if 'Hydrogen peroxide' in reactants_mets_name and len(rxn['reactants_mets']) == 2:
+                rxns = model.reactions.get_by_id(rxn['id'])
+                reactants_mets_name = [met.name for met in rxns.reactants]
+                products_mets_name = [met.name for met in rxns.products]      
+                if len(set(H2O2_NAME) & set(reactants_mets_name)) != 0 and len(rxn['reactants_mets']) == 2:
                     if len(set(NADH) & set(rxn['reactants_mets'])) != 0 or len(set(NADPH) & set(rxn['reactants_mets'])) != 0 or len(set(H2O2_REDUCED) & set(reactants_mets_name)) != 0:
                         if rxn['bounds'] == [-1000,1000] or rxn['bounds'] == [-1000,0]:
                             rxn["rules"]["h2o2_rxn"] = "true"     
-                if 'Hydrogen peroxide' in products_mets_name and len(rxn['products_mets']) == 2:
+                if len(set(H2O2_NAME) & set(products_mets_name)) != 0 and len(rxn['products_mets']) == 2:
                     if len(set(NADH) & set(rxn['products_mets'])) != 0 or len(set(NADPH) & set(rxn['products_mets'])) != 0 or len(set(H2O2_REDUCED) & set(products_mets_name)) != 0:
                         if rxn['bounds'] == [-1000,1000] or rxn['bounds'] == [0,1000]:    
                             rxn["rules"]["h2o2_rxn"] = "true"   
@@ -400,7 +417,7 @@ class Rules():
         """
         ate_met = []  # acid metabolites
         for met in model_info['metabolites']:
-            if met['name'].endswith('ate') or met['name'].split(' (')[0].endswith('ate') or met['name'].endswith('Acid') or met['name'].endswith('acid'):
+            if met['name'].endswith('ate') or met['name'].endswith('Acid') or met['name'].endswith('acid'):
                 ate_met.append(met['name'])
         return ate_met    
 
@@ -466,10 +483,22 @@ class Rules():
                     if rxn['bounds'] == [-1000,1000] or rxn['bounds'] == [0,1000]:
                         rxn["rules"]["sugar_pi_rxn"] = "true"                          
 
+    def find_glutamate_synthesis(self, model_info):
+        """Identify reactions that do not follow the rules for glutamate synthesis"""
+        for rxn in model_info['reactions']:
+            if len(set(AKG_NAME) & set(rxn['products_mets'])) != 0 and len(set(GLUTAMINE) & set(rxn['products_mets'])) != 0 and len(set(GLUTAMATE) & set(rxn['products_mets'])) != 0:
+                if rxn['bounds'] == [-1000,1000] or rxn['bounds'] == [0,1000]:
+                    rxn["rules"]["glutamate_synthesis_rxn"] = "true"
+            if len(set(AKG_NAME) & set(rxn['reactants_mets'])) != 0 and len(set(GLUTAMINE) & set(rxn['reactants_mets'])) != 0 and len(set(GLUTAMATE) & set(rxn['reactants_mets'])) != 0:
+                if rxn['bounds'] == [-1000,1000] or rxn['bounds'] == [-1000,0]:
+                    rxn["rules"]["glutamate_synthesis_rxn"] = "true"
+
+
     def find_quino_rxn(self, model_info):
+        """Find reactions that do not follow the rules for reactions of quinones"""
         quino_mets = []
         for met in model_info['metabolites']:
-            if re.search(r'Ubiquinone|Ubiquinol|Menaquinone|Menaquinol|Plastoquinol|Plastoquinone|2-Demethylmenaquinol|2-Demethylmenaquinone|Flavin adenine dinucleotide',met['name']):
+            if re.search(r'Ubiquinone|Ubiquinol|Menaquinone|Menaquinol|Plastoquinol|Plastoquinone|2-Demethylmenaquinol|2-Demethylmenaquinone|Flavin adenine dinucleotide|Ubiquinone-8|QH2|Ubiquinol-\d|mql7|Menaquinone \d|Menaquinol|2-Demethylmenaquinone 8|2-Demethylmenaquinol 8|2-Demethylmenaquinol8|2dmmq7|FAD',met['name']):
                 quino_mets.append(met['name'])
         for rxn in model_info['reactions']:
             if len(set(rxn['reactants_mets']) & set(quino_mets)) != 0 and len(set(NADH) & set(rxn['reactants_mets'])) != 0 and len(set(NAD) & set(rxn['products_mets'])) != 0:
@@ -478,6 +507,95 @@ class Rules():
             if len(set(rxn['products_mets']) & set(quino_mets)) != 0 and len(set(NADH) & set(rxn['products_mets'])) != 0 and len(set(NAD) & set(rxn['reactants_mets'])) != 0:
                 if rxn['bounds'] == [-1000,1000] or rxn['bounds'] == [0,1000]:
                     rxn["rules"]["quino_rxn"] = "true"      
+
+
+    def find_respiratory_chain_rxn(self, model_info, model):
+        """Get Respiratory Chain Reaction"""
+        k = 0
+        for rxn in model_info['reactions']:
+            for met in rxn['all_mets']:
+                if not re.search(r'Ubiquinol-\d|O2-|H+|Ubiquinone-8|O2|NAD|Cytochrome c3+|NADH|Cytochrome c2+|H2O|Na+|QH2|mql7|Menaquinone \d|Menaquinol|Menaquinol 8|menaquinol|Plastoquinol|Plastoquinone|2-Demethylmenaquinone 8|2-Demethylmenaquinol 8|2-Demethylmenaquinol8|2dmmq7|FAD', met):
+                    k += 1
+            rxns = model.reactions.get_by_id(rxn['id'])
+            if k == 0 and len(set(rxn['reactants_mets']) & set(H_NAME)) != 0 and len(set(rxn['products_mets']) & set(H_NAME)) != 0:
+                if any(met.compartment in H_COMPARTMENT for met in rxns.reactants if met.id in H):
+                    if rxns.lower_bound == -1000:
+                        rxn["rules"]["respiratory_chian_rxn"] = "true"  
+                    else:
+                        rxn["rules"]["right_chain_rxn"] = "true" 
+                if any(met.compartment in H_COMPARTMENT for met in rxns.products if met.id in H):
+                    if rxns.upper_bound == 1000:
+                        rxn["rules"]["respiratory_chian_rxn"] = "true"  
+                    else:
+                        rxn["rules"]["right_chain_rxn"] = "true" 
+            k = 0
+
+
+    def find_respiratory_chain_rxn2(self, model_info):
+        """
+        Get Respiratory Chain Reaction
+        """
+        for rxn in model_info['reactions']:
+            if len(rxn['all_mets']) == 7 and set(rxn['all_mets']).issubset(ATP_SYNTHASE):
+                if len(set(ATP_NAME) & set(rxn['reactants_mets'])) != 0:
+                    if rxn['bounds'] == [0,1000]: 
+                        rxn["rules"]["respiratory_chian_rxn"] = "true"
+                    else:
+                        rxn["rules"]["right_chain_rxn"] = "true" 
+                if len(set(ATP_NAME) & set(rxn['products_mets'])) != 0:
+                    if rxn['bounds'] == [-1000,0]: 
+                        rxn["rules"]["respiratory_chian_rxn"] = "true"
+                    else:
+                        rxn["rules"]["right_chain_rxn"] = "true" 
+       
+
+    def get_metacyc_rxn(self, rxn, l_list, r_list, lower_dict, upper_dict, dfId, metName, met):
+        """"""
+        if len(set(metName) & set(rxn['reactants_mets'])) != 0:
+            if fnmatch.filter(l_list, f'*{met}_*'):
+                if rxn['bounds'][0] != lower_dict[dfId] or rxn['bounds'][1] != upper_dict[dfId] : return 1                
+            if fnmatch.filter(r_list, f'*{met}_*'):
+                if rxn['bounds'][0] != (~upper_dict[dfId] + 1) or rxn['bounds'][1] != (~lower_dict[dfId] + 1) : return 1  # ~1000==-1001,~0=-1
+        if len(set(metName) & set(rxn['products_mets'])) != 0:
+            if fnmatch.filter(r_list, f'*{met}_*'):
+                if rxn['bounds'][0] != lower_dict[dfId] or rxn['bounds'][1] != upper_dict[dfId] : return 1             
+            if fnmatch.filter(l_list, f'*{met}_*'):
+                if rxn['bounds'][0] != (~upper_dict[dfId] + 1) or rxn['bounds'][1] != (~lower_dict[dfId] + 1) : return 1
+        return 0
+
+
+
+    def find_metacyc_bounds_rxn(self, model_info):
+        """"""
+        df = pd.read_excel("mqc/summary/MetacycRule.xlsx")
+        df_name = df.iloc[:,0]
+        df_lower_bound = df.iloc[:,1]
+        df_upper_bound = df.iloc[:,2]
+        df_rxn = df.iloc[:,3]
+        lower_dict = dict(zip(df_name,df_lower_bound))
+        upper_dict = dict(zip(df_name,df_upper_bound))
+        rxn_dict = dict(zip(df_name, df_rxn))
+        for rxn in model_info['reactions']:
+            rxn_annotation = rxn['annotation']
+            if 'biocyc' in rxn_annotation.keys() and type(rxn_annotation['biocyc'])==str:
+                cycId = rxn_annotation['biocyc'][5:]
+                for dfId in list(df_name): # cycId没有后缀，遍历表中ID，可以将没有后缀的与有后缀的匹配到一起
+                    if cycId in dfId:  # cycId:'TREHALA-RXN',dfId:'TREHALA-RXN[CCO-CYTOSOL]-TREHALOSE/WATER//GLC/ALPHA-GLUCOSE.48.' 
+                        l_met = rxn_dict[dfId].split('-->')[0]
+                        r_met = rxn_dict[dfId].split('-->')[1]
+                        l_list = [m for m in l_met.split('+')]
+                        r_list = [m for m in r_met.split('+')]
+                        if self.get_metacyc_rxn(rxn, l_list, r_list, lower_dict, upper_dict, dfId, ATP_NAME, "ATP"):
+                            rxn["rules"]["metacyc_rxn"] = "true" 
+                        if self.get_metacyc_rxn(rxn, l_list, r_list, lower_dict, upper_dict, dfId, H2O_NAME, "WATER"):
+                            rxn["rules"]["metacyc_rxn"] = "true"  
+                        if self.get_metacyc_rxn(rxn, l_list, r_list, lower_dict, upper_dict, dfId, NADP, "NADP"):
+                            rxn["rules"]["metacyc_rxn"] = "true"  
+                        if 'ATP' not in rxn['all_mets'] and 'H2O' not in rxn['all_mets'] and 'NADP(+)' not in rxn['all_mets']:
+                            if rxn['bounds'][0] != lower_dict[dfId] or rxn['bounds'][1] != upper_dict[dfId]:
+                                rxn["rules"]["metacyc_rxn"] = "true" 
+
+
 
     def get_all_rules(self, model_info, model):
         self.find_o2s(model_info)
@@ -496,4 +614,12 @@ class Rules():
         self.find_aldehyde_ate_rxn(model_info)
         self.find_aldehyde_ate_rxns(model_info)
         self.find_sugar_pi_rxn(model_info)
+        self.find_glutamate_synthesis(model_info)
         self.find_quino_rxn(model_info)
+        self.find_respiratory_chain_rxn(model_info, model)
+        self.find_respiratory_chain_rxn2(model_info)
+        self.find_metacyc_bounds_rxn(model_info)
+        if model_info['model_identifier'] == 'modelseed':
+            pass
+        if model_info['model_identifier'] == 'metaNetx':
+            pass

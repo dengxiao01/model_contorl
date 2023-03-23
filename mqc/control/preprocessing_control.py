@@ -1,12 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import cobra
-from cobra.flux_analysis import pfba
 import pandas as pd
-import os, sys
-# from os.path import abspath, join, dirname
-# sys.path.insert(1, join(abspath(dirname(__file__)), '../../../model_contorl'))
-# sys.path.append('../../../model_contorl')
+
 from mqc.defaults import *
 from ..utils import add_rxn
 
@@ -39,6 +35,7 @@ class Preprocess():
         except:
             self.model = cobra.io.load_json_model(file_path)
             self.check_model = cobra.io.load_json_model(file_path)
+       
 
 
 
@@ -165,3 +162,7 @@ class Preprocess():
         modelseed_id_to_name = dict(zip(df['id'], df['name']))
         return modelseed_id_to_name
 
+
+
+    def add_kegg_formula(self):
+        """"""
